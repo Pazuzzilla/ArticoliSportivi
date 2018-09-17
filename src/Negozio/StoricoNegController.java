@@ -9,9 +9,9 @@ public class StoricoNegController {
     private StoricoNegModel theModel;
 
     public StoricoNegController(StoricoNegModel vmm){
-        theModel=vmm;
+        theModel = vmm;
     }
-
+    
     public StoricoNegModel getTheModel() {
         return theModel;
     }

@@ -8,15 +8,14 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-<<<<<<< HEAD
 import Negozio.NegozioController;
 import Negozio.NegozioModel;
 import Negozio.NegozioView;
-=======
+
 import Magazzino.MagazzinoController;
 import Magazzino.MagazzinoModel;
 import Magazzino.MagazzinoView;
->>>>>>> d8f395d27a5aff8661d634864977dadcd524f02f
+
 import Segreteria.SegreteriaController;
 import Segreteria.SegreteriaModel;
 import Segreteria.SegreteriaView;
@@ -55,7 +54,7 @@ public class LoginController {
 
 					//b=true;
 					
-					NegozioModel nm = new NegozioModel();
+					NegozioModel nm = new NegozioModel(negozio);
 					
 					NegozioController nc = new NegozioController();
 					

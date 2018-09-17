@@ -11,21 +11,25 @@ public class NegozioController {
 	private NegozioModel TheModel;
 	
 	public NegozioController(){
-		//TheModel=sm1;
+		
 	}
 	
 		public void openStorico() {
-			StoricoNegModel snm = new StoricoNegModel(new Negozio());
+			Negozio neg = TheModel.getNeg();
 			
-			StoricoNegController snc=new StoricoNegController(snm);
+			StoricoNegModel snm = new StoricoNegModel(neg);
+			
+			StoricoNegController snc = new StoricoNegController(snm);
 			 // View
-			StoricoNegView snv =new StoricoNegView(snc, snm);
+			StoricoNegView snv = new StoricoNegView(snc, snm);
 			
 			snv.run();
 		}
 
 		public void newOrdine() {
-			OrdineModel om = new OrdineModel();
+			Negozio neg = TheModel.getNeg();
+			
+			OrdineModel om = new OrdineModel(neg);
 			
 			OrdineController oc=new OrdineController(om);
 			 // View

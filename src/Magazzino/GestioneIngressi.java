@@ -10,6 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class GestioneIngressi extends JFrame {
 
@@ -20,6 +24,7 @@ public class GestioneIngressi extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -93,8 +98,8 @@ public class GestioneIngressi extends JFrame {
 		textField_3.setColumns(10);
 		
 		JLabel lblNuovoCodiceDi = new JLabel("Nuovo codice di magazzino:");
-		lblNuovoCodiceDi.setBackground(new Color(255, 0, 0));
 		lblNuovoCodiceDi.setBounds(468, 38, 172, 16);
+		lblNuovoCodiceDi.setBackground(new Color(255, 0, 0));
 		contentPane.add(lblNuovoCodiceDi);
 		
 		textField_4 = new JTextField();
@@ -110,5 +115,36 @@ public class GestioneIngressi extends JFrame {
 		textField_5.setBounds(652, 77, 172, 26);
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(57, 174, 724, 227);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column", "New column"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		JButton btnInserisci = new JButton("Inserisci");
+		btnInserisci.setBounds(638, 437, 118, 26);
+		contentPane.add(btnInserisci);
 	}
 }
