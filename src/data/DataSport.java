@@ -45,7 +45,7 @@ public class DataSport {
 		String Passw;
 
 
-		try (PreparedStatement st = conn.prepareStatement("SELECT * FROM utenti\n" + "WHERE id=?")) {
+		try (PreparedStatement st = conn.prepareStatement("SELECT * FROM utenti\nWHERE id=?")) {
 			st.setString(1, Utente);
 			rs1 = st.executeQuery();
 
@@ -53,6 +53,32 @@ public class DataSport {
 
 			while (rs1.next()) {
 				Passw = rs1.getString("password");
+			}
+
+			rs1.close();
+			//conn.close();
+			return Passw;
+		}
+
+	}
+
+
+	//getPass metodo invocato da LoginController
+	public String getNegozio(String Utente) throws SQLException, ClassNotFoundException, NullPointerException {
+
+		ResultSet rs1 = null;
+
+		String Passw;
+
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT * FROM utenti\nWHERE id=?")) {
+			st.setString(1, Utente);
+			rs1 = st.executeQuery();
+
+			Passw = new String();
+
+			while (rs1.next()) {
+				Passw = rs1.getString("negozio");
 			}
 
 			rs1.close();
