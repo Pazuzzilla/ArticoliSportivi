@@ -1,6 +1,9 @@
 package Segreteria;
 
 
+import data.Negozio;
+import data.Negozio;
+
 public class SegreteriaController {
 	
 	private SegreteriaModel TheModel;
@@ -19,5 +22,17 @@ public class SegreteriaController {
 		//run() Nuovoarticolo
 		nav.run();
 	}
+
+	public void openVMM() {
+		//Model Nuovoarticolo
+		VisualizzaMovimentiModel vmm =new VisualizzaMovimentiModel(new Negozio());
+		//Controller Nuovoarticolo
+		VisualizzaMovimentiController vmc= new VisualizzaMovimentiController(vmm);
+		//View Nuovoarticolo
+		VisualizzaMovimentiView vmv= new VisualizzaMovimentiView(vmc,vmm);
+		//run() Nuovoarticolo
+		vmv.run();
+	}
+
 }
 

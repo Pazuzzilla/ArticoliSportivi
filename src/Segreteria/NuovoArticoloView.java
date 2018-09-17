@@ -33,23 +33,6 @@ public class NuovoArticoloView extends JFrame {
 
 
 	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NuovoArticoloView frame = new NuovoArticoloView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
-	/**
 	 * Create the frame.
 	 */
 	public NuovoArticoloView(NuovoArticoloController nac , NuovoArticoloObserved nao) {
@@ -148,7 +131,12 @@ public class NuovoArticoloView extends JFrame {
 		 NuovoArticoloController Nac= this.NAC;
 		 //NuovoArticoloObserved Nao = this.NAO;
 		 Nac.Exist(articolo);
-		
+	}
+	
+	
+	public void insert() throws SQLException {
+		NuovoArticoloController nac=this.NAC;	
+		nac.insert(textField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText());
 	}
 	
 	
@@ -168,12 +156,24 @@ public class NuovoArticoloView extends JFrame {
 
 		}
 	}
+	
+	//Classe per richiedere l'effettiva aggiunta dell'articolo nel database
 	private class Inserisci extends AbstractAction {
 		public Inserisci() {
 			putValue(NAME, "Inserisci");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
+			try {
+				insert();
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

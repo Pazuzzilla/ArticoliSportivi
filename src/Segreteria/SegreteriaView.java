@@ -21,24 +21,9 @@ public class SegreteriaView extends JFrame {
 	private SegreteriaController SegreteriaController;
 	private SegreteriaModel SegreteriaModel;
 	private final Apripannello action = new Apripannello();
+	private final Action action_1 = new SwingAction();
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SegreteriaView frame = new SegreteriaView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+
 	/**
 	 * Create the frame.
 	 */
@@ -58,7 +43,11 @@ public class SegreteriaView extends JFrame {
 			}
 		});*/
 		btnInserireNuovoArticolo.setAction(action);
-		contentPane.add(btnInserireNuovoArticolo, BorderLayout.NORTH);
+		contentPane.add(btnInserireNuovoArticolo, BorderLayout.WEST);
+		
+		JButton btnVisualizzaMovimentiMagazzino = new JButton("Visualizza Movimenti magazzino");
+		btnVisualizzaMovimentiMagazzino.setAction(action_1);
+		contentPane.add(btnVisualizzaMovimentiMagazzino, BorderLayout.EAST);
 	}
 	
 	public void run() {
@@ -74,6 +63,14 @@ public class SegreteriaView extends JFrame {
 		
 		c1.Openna();
 	}
+
+	public void openVMM() {
+		SegreteriaController c1 =this.SegreteriaController;
+		
+		c1.openVMM();
+	}
+	
+	
 	
 	//Azione per far Partire l'inerfaccia di nuovoarticolo
 	private class Apripannello extends AbstractAction {
@@ -86,4 +83,14 @@ public class SegreteriaView extends JFrame {
 		}
 	}
 	
+	//Azione per aprire l'interfaccia di visualizzazzione di un ordine in base al negozio
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "Visualizza Movimenti magazzino");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+			openVMM();
+		}
+	}
 }

@@ -25,7 +25,7 @@ import java.util.Observer;
 
 import javax.swing.JPasswordField;
 
-public class LoginView extends JFrame implements Observer {
+public class LoginView extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -33,21 +33,6 @@ public class LoginView extends JFrame implements Observer {
 	private final Action action = new SwingAction();
 	private LoginController LoginController;
 	private LoginObservedModel LoginModel;
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 
 	/**
 	 * Create the frame.
@@ -117,14 +102,6 @@ public class LoginView extends JFrame implements Observer {
 	}
 	
 
-// metodo per ricavare l'utente dai campi di login
-    public Utente getUtente() {
-    	Utente Ut = new Utente(null,null);
-    	Ut.setID(textField.getText());
-    	Ut.setpassw(textField_1.getText());
-    	return Ut;
-    }
-
 	public void run() {
 		try {
 			setVisible(true);
@@ -146,18 +123,13 @@ public class LoginView extends JFrame implements Observer {
 		}
 		m1.setpassw(textField_1.getText());
 		boolean b=c1.accredita(m1);
-		
+
 		if (b==true) {
 			dispose();
 		}
 
 		
 	}
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
-	
+
 
 }
