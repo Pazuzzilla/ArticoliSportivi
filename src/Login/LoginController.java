@@ -8,6 +8,9 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import Negozio.NegozioController;
+import Negozio.NegozioModel;
+import Negozio.NegozioView;
 import Segreteria.SegreteriaController;
 import Segreteria.SegreteriaModel;
 import Segreteria.SegreteriaView;
@@ -39,7 +42,16 @@ public class LoginController {
 				//CASISTICA NEGOZIO
 				case "NEG": 	
 					JOptionPane.showMessageDialog(null,"Utente di Negozio");
-					b=true;
+					//b=true;
+					
+					NegozioModel nm = new NegozioModel();
+					
+					NegozioController nc = new NegozioController();
+					
+					NegozioView nv = new NegozioView(nc,nm);
+					
+					nv.run();
+					
 					break;
 				case "MAG": 
 					JOptionPane.showMessageDialog(null,"Utente di Magazzino");

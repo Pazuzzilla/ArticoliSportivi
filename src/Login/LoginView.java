@@ -133,3 +133,9 @@ public class LoginView extends JFrame{
 
 
 }
+
+/* 	Model -> metto variabili serve come magazzino dati
+ 	Controller -> gestisce
+ 	View -> visualizza e prende input
+ 	run()
+ */
