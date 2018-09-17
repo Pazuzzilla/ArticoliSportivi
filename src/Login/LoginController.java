@@ -8,10 +8,14 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import Magazzino.MagazzinoController;
+import Magazzino.MagazzinoModel;
+import Magazzino.MagazzinoView;
 import Segreteria.SegreteriaController;
 import Segreteria.SegreteriaModel;
 import Segreteria.SegreteriaView;
 import data.DataSport;
+import data.Negozio;
 
 //controller della classe login che fa interrogazioni sul database
 public class LoginController {
@@ -37,12 +41,25 @@ public class LoginController {
 			switch (temp) {
 					
 				//CASISTICA NEGOZIO
-				case "NEG": 	
-					JOptionPane.showMessageDialog(null,"Utente di Negozio");
-					b=true;
+				case "NEG":
+					Negozio negozio = new Negozio();
+					negozio.setNegozioid(DataSport.getInstance().getNegozio(ID));
+					JOptionPane.showMessageDialog(null,"Utente di Negozio di: "+negozio.getNegozioid());
+
 					break;
 				case "MAG": 
 					JOptionPane.showMessageDialog(null,"Utente di Magazzino");
+
+					//Model SEGRETERIA
+					MagazzinoModel mm=new MagazzinoModel();
+					//Controller SEGRETERIA
+					MagazzinoController mc= new MagazzinoController(mm);
+					//View SEGRETERIA
+					MagazzinoView mv =new MagazzinoView(mc,mm);
+
+					//run SEGRETERIA
+					mv.run();
+
 					break;
 				case "SEG":	
 					JOptionPane.showMessageDialog(null,"Utente di Segreteria");
