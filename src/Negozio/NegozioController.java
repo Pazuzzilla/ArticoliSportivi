@@ -3,6 +3,7 @@ package Negozio;
 
 import Login.LoginController;
 import Login.LoginView;
+import data.DataSport;
 import data.Negozio;
 import data.Negozio;
 
@@ -17,11 +18,17 @@ public class NegozioController {
 		public void openStorico() {
 			Negozio neg = TheModel.getNeg();
 			
-			StoricoNegModel snm = new StoricoNegModel(neg);
+			//StoricoNegModel snm = new StoricoNegModel(neg);
 			
-			StoricoNegController snc = new StoricoNegController(snm);
+			//StoricoNegController snc = new StoricoNegController(snm);
 			 // View
-			StoricoNegView snv = new StoricoNegView(snc, snm);
+
+			String s = null;
+			s =  neg.getNegozioid();
+			
+			Object [][] o = DataSport.getInstance().getStoNeg(s);
+			
+			StoricoNegView snv = new StoricoNegView(o);
 			
 			snv.run();
 		}

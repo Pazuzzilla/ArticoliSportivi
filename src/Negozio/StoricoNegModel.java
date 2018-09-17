@@ -18,7 +18,6 @@ private int howMany;
         iG.setNegozioid(i);
     }
 
-
     public String getneg() {
         return iG.getNegozioid();
     }

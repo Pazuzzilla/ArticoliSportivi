@@ -199,5 +199,49 @@ public class DataSport {
 		rs.close();
 		return ordineUscita;
 	}
+	
+	// metodo per storico negozio
+	public Object[][] getStoNeg(String negID){
+		
+		int i = 0;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+		
+		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM Ordine\nWHERE cod_negozio=?")) {
+			st.setString(1,negID );
+			rs = st.executeQuery();
+			
+			while(rs.next()){
+				i++;
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Object[][] o = new Object[6][i];
+		
+		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM Ordine\nWHERE cod_negozio=?")) {
+			st.setString(1,negID );
+			rs1 = st.executeQuery();
+			
+			for(int j = 0; j < i; j++) {
+				rs1.next();
+				o[0][j] = rs1.getInt("codice_ordine");
+				o[1][j] = rs1.getString("cod_negozio");
+				o[2][j] = rs1.getString("nome_articolo");
+				o[3][j] = rs1.getInt("quantità");
+				o[4][j]	= rs1.getDate("data_ordine");
+				o[5][j] = rs1.getFloat("prezzo_tot");
+			}
+			rs1.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return o;
+	}
 
 }

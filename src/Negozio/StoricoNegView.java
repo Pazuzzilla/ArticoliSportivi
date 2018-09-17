@@ -22,75 +22,41 @@ import javax.swing.Action;
 public class StoricoNegView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable table;
-	private final Action action = new SwingAction();
-	private StoricoNegModel vMM;
-	private StoricoNegController vMC;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public StoricoNegView(StoricoNegController vmc, StoricoNegModel vmm) {
-		vMC = vmc;
-		vMM = vmm;
+	public StoricoNegView(Object[][] o) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 346, 450);
+		setBounds(100, 100, 908, 455);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
 
-		JLabel lblNegozioDaVisualizzare = new JLabel("Negozio da Visualizzare");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNegozioDaVisualizzare, 21, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, lblNegozioDaVisualizzare, 5, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, lblNegozioDaVisualizzare, 446, SpringLayout.WEST, contentPane);
-		contentPane.add(lblNegozioDaVisualizzare);
-
-		textField = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, textField, 6, SpringLayout.SOUTH, lblNegozioDaVisualizzare);
-		sl_contentPane.putConstraint(SpringLayout.WEST, textField, 5, SpringLayout.WEST, contentPane);
-		contentPane.add(textField);
-		textField.setColumns(10);
-
 		JScrollPane scrollPane = new JScrollPane();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, scrollPane, 11, SpringLayout.SOUTH, textField);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, scrollPane, 18, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, scrollPane, -24, SpringLayout.SOUTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, scrollPane, 306, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, scrollPane, 853, SpringLayout.WEST, contentPane);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-				new Object[][]{
-						{null, null}, {null, null},
-						/*{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},
-						{null, null}, {null, null},*/
-				},
-				new String[]{
-						"Ordine", "Uscita"
-				}
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0"
+			}
 		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(86);
+		updateTable(o);
 		scrollPane.setViewportView(table);
-
-		JButton btnVisualizza = new JButton("Visualizza");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, btnVisualizza, 40, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, lblNegozioDaVisualizzare, -3, SpringLayout.NORTH, btnVisualizza);
-		sl_contentPane.putConstraint(SpringLayout.EAST, btnVisualizza, -30, SpringLayout.EAST, contentPane);
-		btnVisualizza.setAction(action);
-		contentPane.add(btnVisualizza);
 	}
 
 	//fa partire la finestra
@@ -104,6 +70,7 @@ public class StoricoNegView extends JFrame {
 
 
 	//metodo che ritornerà dopo una query su database i valori da stampare
+	/*
 	public void visualizza(String negozio) throws SQLException {
 		StoricoNegModel vmm= vMM;
 		StoricoNegController vmc= vMC;
@@ -116,46 +83,32 @@ public class StoricoNegView extends JFrame {
 		int[][]ordineUscita=vmc.visualizza(i,vmm);
 		vMM.setOrdineUscita(ordineUscita);
 	}
-
+*/
 	// metodo che fa visualizzare la tabella con le info sugli ordini
-	public void updateTable() {
-		StoricoNegModel vmm= vMM;
-		StoricoNegController vmc= vMC;
+	public void updateTable(Object[][] o) {
 		int j;
-		int i=vMM.getHowMany();
-		int[][] ordineUscita=vMM.getOrdineUscita();
+		int i = o.length;
+		
+		//int i=vMM.getHowMany();
 
 		//setto la nuova tabella che avrà solo le righe necessarie
-		table.setModel(new DefaultTableModel(new Object[i][2], new String[]{"Ordine", "Uscita"}));
-
+		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0"}));
 
 		for (j=0;j<=i;j++){
 
-			table.setValueAt(ordineUscita[0][j],j,0);
-			table.setValueAt(ordineUscita[1][j],j,1);
-
+			table.setValueAt(o[0][j],j,0);
+			table.setValueAt(o[1][j],j,1);
+			table.setValueAt(o[2][j],j,1);
+			table.setValueAt(o[3][j],j,1);
+			table.setValueAt(o[4][j],j,1);
+			table.setValueAt(o[5][j],j,1);
+			//table.setValueAt(arg0, arg1, arg2);
+/*	
 			if (ordineUscita[1][j]==0){
 				table.setValueAt("non evaso",j,1);
 			}
+*/
 		}
 	}
 
-	//classe privata per far partire il comando visualizza dopo che si è premuto il bottone
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "Visualizza");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-
-		public void actionPerformed(ActionEvent e) {
-
-			try {
-				visualizza(textField.getText());
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-
-			updateTable();
-		}
-	}
 }
