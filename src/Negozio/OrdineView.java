@@ -20,7 +20,6 @@ import javax.swing.JScrollPane;
 public class OrdineView extends JFrame  {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTextField textArt;
 	private JLabel lblInserireQuantit;
 	private JTextField textQ;
@@ -53,32 +52,22 @@ public class OrdineView extends JFrame  {
 		setContentPane(contentPane);
 		Date data1 = new Date();
 		contentPane.setLayout(null);
-
-		
-		JLabel lblInserireCodiceNegozio = new JLabel("Inserire codice negozio:");
-		lblInserireCodiceNegozio.setBounds(43, 15, 110, 13);
-		contentPane.add(lblInserireCodiceNegozio);
-		
-		textField = new JTextField();
-		textField.setBounds(159, 10, 213, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
 		JLabel lblInserireArticoloDa = new JLabel("Inserire articolo da aggiungere all'ordine:");
-		lblInserireArticoloDa.setBounds(43, 38, 190, 13);
+		lblInserireArticoloDa.setBounds(43, 18, 260, 13);
 		contentPane.add(lblInserireArticoloDa);
 		
 		textArt = new JTextField();
-		textArt.setBounds(239, 35, 230, 19);
+		textArt.setBounds(315, 14, 230, 19);
 		contentPane.add(textArt);
 		textArt.setColumns(10);
 		
 		lblInserireQuantit = new JLabel("Inserire quantità");
-		lblInserireQuantit.setBounds(43, 67, 67, 13);
+		lblInserireQuantit.setBounds(43, 49, 185, 13);
 		contentPane.add(lblInserireQuantit);
 		
 		textQ = new JTextField();
-		textQ.setBounds(116, 62, 130, 19);
+		textQ.setBounds(315, 45, 130, 19);
 		contentPane.add(textQ);
 		textQ.setColumns(10);
 		
@@ -112,22 +101,22 @@ public class OrdineView extends JFrame  {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
 			},
 			new String[] {
-				"Negozio", "codice ordine", "data", "articolo", "quantità"
+				"Negozio", "codice ordine", "data", "articolo", "quantità","Prezzo totale"
 			}
 		));
      
@@ -136,19 +125,6 @@ public class OrdineView extends JFrame  {
 	
 	// creo righe di ordine che andranno passate alla finestr NEGOZIO
 
-	/*
-	public Ordine_Negozio GetOrder() {
-		Ordine_Negozio ON = new Ordine_Negozio();
-		Date Data = new Date();
-		ON.setcodNeg(textField.getText());
-		ON.setart(textArt.getText());
-		ON.setDate(Data);
-		ON.setQ(Integer.parseInt(textQ.getText()));
-
-		
-		return ON;
-	}
-	*/
 	
 	public void run() {
 		try {
