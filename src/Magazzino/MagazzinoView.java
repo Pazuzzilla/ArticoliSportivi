@@ -110,7 +110,7 @@ public class MagazzinoView extends JFrame {
 
 	private class SwingAction_1 extends AbstractAction {
 		public SwingAction_1() {
-			putValue(NAME, "Gestione Articoli");
+			putValue(NAME, "Gestione Posizioni");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {

@@ -201,7 +201,7 @@ public class OrdineView extends JFrame  {
 	}
 	
 	
-	// da settare invia ordine
+	// da settare invia ordine :i campi dell'ordine da aggiungere al database si trovano nella jTable
 
 
 	//inner class per inserire l'ordine in database
