@@ -51,11 +51,11 @@ public class LoginController {
 					JOptionPane.showMessageDialog(null,"Utente di Negozio di: "+negozio.getNegozioid());
 
 					//b=true;
-					
+					//Model NEGOZIO
 					NegozioModel nm = new NegozioModel(negozio);
-					
+					//Controller NEGOZIO
 					NegozioController nc = new NegozioController(nm);
-					
+					//View NEGOZIO
 					NegozioView nv = new NegozioView(nc,nm);
 					
 					nv.run();

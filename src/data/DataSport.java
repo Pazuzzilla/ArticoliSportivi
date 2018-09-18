@@ -245,4 +245,51 @@ public class DataSport {
 		return o;
 	}
 
+
+	// metodo usato da OrdineController per verificare se un articolo esiste in magazzino e in caso prenderne il prezzo totale per l'ordine
+	public float verifica(String articolo, int quantità) {
+		float prezzo=0;
+		ResultSet rs1 = null;
+
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT nome,prezzo FROM articoloregistrato WHERE nome=?")) {
+			st.setString(1, articolo);
+			rs1 = st.executeQuery();
+
+				while (rs1.next()) {
+					prezzo = rs1.getFloat("prezzo");
+				}
+
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		prezzo = prezzo*quantità;
+		return prezzo;
+	}
+
+
+
+	// metodo richiamato da OrdineController per calcolare il codice del nuovo ordine da inserire
+	public int new_Order() {
+
+		ResultSet rs1 = null;
+		int nuovo_ordine=0;
+		try (PreparedStatement st = conn.prepareStatement("SELECT MAX(codice_ordine) AS ultimo_ordine\nFROM ordine;")) {
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				nuovo_ordine  = rs1.getInt("ultimo_ordine");
+			}
+			nuovo_ordine++;
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nuovo_ordine;
+
+	}
 }
