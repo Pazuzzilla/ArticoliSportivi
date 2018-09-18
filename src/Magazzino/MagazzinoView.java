@@ -15,24 +15,25 @@ import java.awt.event.ActionListener;
 public class MagazzinoView extends JFrame {
 
 	private JPanel contentPane;
-	private MagazzinoController MagazzinoController;
-	private MagazzinoModel MagazzinoModel;
 	private final Apripannello action = new Apripannello();
 	private final Action action_1 = new SwingAction();
 	private final Action action_2 = new SwingAction_1();
+	private MagazzinoController mC;
+	private MagazzinoModel mM;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public MagazzinoView(MagazzinoController sc, MagazzinoModel sm) {
+	public MagazzinoView(MagazzinoController mc, MagazzinoModel mm) {
+
+		mC = mc;
+		mM = mm;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 194);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		MagazzinoController =sc;
-		MagazzinoModel =sm;
 		contentPane.setLayout(null);
 		
 		JButton btnInserireNuovoArticolo = new JButton("New button");
@@ -74,14 +75,10 @@ public class MagazzinoView extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
-	public void OpenNA() {
-		MagazzinoController c1 =this.MagazzinoController;
-		//c1.Openna();
-	}
+
 
 	public void openVMM() {
-		MagazzinoController c1 =this.MagazzinoController;
+		MagazzinoController c1 =this.mC;
 		
 		//c1.openVMM();
 	}
@@ -118,7 +115,7 @@ public class MagazzinoView extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 
-			//openGA();
+			mC.openGA();
 		}
 	}
 }

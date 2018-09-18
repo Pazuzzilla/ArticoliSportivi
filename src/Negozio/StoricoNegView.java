@@ -69,27 +69,12 @@ public class StoricoNegView extends JFrame {
 	}
 
 
-	//metodo che ritornerà dopo una query su database i valori da stampare
-	/*
-	public void visualizza(String negozio) throws SQLException {
-		StoricoNegModel vmm= vMM;
-		StoricoNegController vmc= vMC;
 
-		vmm.setiG(negozio);
-		int i=0;
-		i=vmc.howMany(vmm);
-		vMM.setHowMany(i);
-
-		int[][]ordineUscita=vmc.visualizza(i,vmm);
-		vMM.setOrdineUscita(ordineUscita);
-	}
-*/
 	// metodo che fa visualizzare la tabella con le info sugli ordini
 	public void updateTable(Object[][] o) {
 		int j;
 		int i = o.length;
 		
-		//int i=vMM.getHowMany();
 
 		//setto la nuova tabella che avrà solo le righe necessarie
 		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0","Prezzo totale"}));
@@ -102,12 +87,7 @@ public class StoricoNegView extends JFrame {
 			table.setValueAt(o[3][j],j,3);
 			table.setValueAt(o[4][j],j,4);
 			table.setValueAt(o[5][j],j,5);
-			//table.setValueAt(arg0, arg1, arg2);
-/*	
-			if (ordineUscita[1][j]==0){
-				table.setValueAt("non evaso",j,1);
-			}
-*/
+
 		}
 	}
 

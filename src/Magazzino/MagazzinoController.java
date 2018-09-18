@@ -38,16 +38,14 @@ public class MagazzinoController {
 
 	public void openGA() {
 		//Model Nuovoarticolo
-		//GestioneArticoliModel gam =new GestioneArticoliModel();
+		GestioneArticoliModel gam =new GestioneArticoliModel();
 		//Controller Nuovoarticolo
-		//GestioneArticoliController gac= new GestioneArticoliController(gam);
+		GestioneArticoliController gac= new GestioneArticoliController(gam);
 		//View Nuovoarticolo
-		//GestioneArticoliView gav= new GestioneArticoliView(gac,gam);
+		GestioneArticoliView gav= new GestioneArticoliView(gac,gam);
 		//run() Nuovoarticolo
-		//gav.run();
+		gav.run();
 	}
-
-
 
 }
 

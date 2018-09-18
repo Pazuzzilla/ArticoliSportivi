@@ -73,7 +73,7 @@ public class LoginController {
 					MagazzinoView mv =new MagazzinoView(mc,mm);
 
 					//run SEGRETERIA
-					//mv.run();
+					mv.run();
 
 					break;
 				case "SEG":	

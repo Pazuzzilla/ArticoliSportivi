@@ -292,4 +292,45 @@ public class DataSport {
 		return nuovo_ordine;
 
 	}
+
+
+	//metodo di interrogazione a databae chiamato da GestioneArticoliConttroller per settare la nuova posizione di articoli
+	//e ottenere quella vecchia
+	public String setNewPosition(String articolo, String posizione) {
+
+		ResultSet rs1 = null;
+	    String oldPosizione= new String();
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT * \nFROM articoloregistrato\nWHERE codice=?;")) {
+			st.setString(1, articolo);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				oldPosizione  = rs1.getString("posizione");
+			}
+
+			if (oldPosizione.isEmpty()){
+				JOptionPane.showMessageDialog(null,"codice non trovato");
+			}
+
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+		try (PreparedStatement st = conn.prepareStatement("UPDATE articoloregistrato SET posizione=?\nWHERE codice=?")) {
+			st.setString(1, posizione);
+			st.setString(2, articolo);
+
+			st.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return oldPosizione;
+
+	}
 }
