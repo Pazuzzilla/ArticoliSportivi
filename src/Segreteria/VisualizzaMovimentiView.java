@@ -129,7 +129,7 @@ public class VisualizzaMovimentiView extends JFrame {
 		table.setModel(new DefaultTableModel(new Object[i][2], new String[]{"Ordine", "Uscita"}));
 
 
-		for (j=0;j<=i;j++){
+		for (j=0;j<i;j++){
 
 			table.setValueAt(ordineUscita[0][j],j,0);
 			table.setValueAt(ordineUscita[1][j],j,1);

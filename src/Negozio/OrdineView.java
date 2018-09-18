@@ -135,7 +135,8 @@ public class OrdineView extends JFrame  {
 	}
 	
 	// creo righe di ordine che andranno passate alla finestr NEGOZIO
-	
+
+	/*
 	public Ordine_Negozio GetOrder() {
 		Ordine_Negozio ON = new Ordine_Negozio();
 		Date Data = new Date();
@@ -147,7 +148,7 @@ public class OrdineView extends JFrame  {
 		
 		return ON;
 	}
-	
+	*/
 	
 	public void run() {
 		try {

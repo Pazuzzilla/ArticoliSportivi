@@ -51,7 +51,7 @@ public class StoricoNegView extends JFrame {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0"
+				"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0","Prezzo totale"
 			}
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(86);
@@ -92,16 +92,16 @@ public class StoricoNegView extends JFrame {
 		//int i=vMM.getHowMany();
 
 		//setto la nuova tabella che avrà solo le righe necessarie
-		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0"}));
+		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0","Prezzo totale"}));
 
-		for (j=0;j<=i;j++){
+		for (j=0;j<i-1;j++){
 
 			table.setValueAt(o[0][j],j,0);
 			table.setValueAt(o[1][j],j,1);
-			table.setValueAt(o[2][j],j,1);
-			table.setValueAt(o[3][j],j,1);
-			table.setValueAt(o[4][j],j,1);
-			table.setValueAt(o[5][j],j,1);
+			table.setValueAt(o[2][j],j,2);
+			table.setValueAt(o[3][j],j,3);
+			table.setValueAt(o[4][j],j,4);
+			table.setValueAt(o[5][j],j,5);
 			//table.setValueAt(arg0, arg1, arg2);
 /*	
 			if (ordineUscita[1][j]==0){

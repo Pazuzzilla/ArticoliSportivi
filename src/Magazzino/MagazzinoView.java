@@ -77,13 +77,13 @@ public class MagazzinoView extends JFrame {
 	
 	public void OpenNA() {
 		MagazzinoController c1 =this.MagazzinoController;
-		c1.Openna();
+		//c1.Openna();
 	}
 
 	public void openVMM() {
 		MagazzinoController c1 =this.MagazzinoController;
 		
-		c1.openVMM();
+		//c1.openVMM();
 	}
 	
 	
@@ -95,7 +95,7 @@ public class MagazzinoView extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
-			openGI();
+			//openGI();
 		}
 	}
 	
@@ -106,7 +106,7 @@ public class MagazzinoView extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
-			openGU();
+			//openGU();
 		}
 	}
 
@@ -118,7 +118,7 @@ public class MagazzinoView extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 
-			openGA();
+			//openGA();
 		}
 	}
 }

@@ -186,7 +186,8 @@ public class DataSport {
 		int i = 0;
 		for (i = 0; i < howMany; i++) {
 			try (PreparedStatement st = conn.prepareStatement("SELECT bolla\nFROM uscita\nWHERE cod_ordine=?\nGROUP BY bolla")) {
-				System.out.println(ordineUscita[0][i]);
+
+				//System.out.println(ordineUscita[0][i]);
 				st.setInt(1, ordineUscita[0][i] );
 				rs = st.executeQuery();
 
@@ -199,7 +200,7 @@ public class DataSport {
 		rs.close();
 		return ordineUscita;
 	}
-	
+
 	// metodo per storico negozio
 	public Object[][] getStoNeg(String negID){
 		
@@ -231,7 +232,7 @@ public class DataSport {
 				o[0][j] = rs1.getInt("codice_ordine");
 				o[1][j] = rs1.getString("cod_negozio");
 				o[2][j] = rs1.getString("nome_articolo");
-				o[3][j] = rs1.getInt("quantità");
+				o[3][j] = rs1.getInt("quantitÃ ");
 				o[4][j]	= rs1.getDate("data_ordine");
 				o[5][j] = rs1.getFloat("prezzo_tot");
 			}

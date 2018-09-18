@@ -11,8 +11,8 @@ public class NegozioController {
 	
 	private NegozioModel TheModel;
 	
-	public NegozioController(){
-		
+	public NegozioController(NegozioModel nm){
+		this.TheModel=nm;
 	}
 	
 		public void openStorico() {

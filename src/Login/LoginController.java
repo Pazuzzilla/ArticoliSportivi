@@ -1,10 +1,8 @@
 package Login;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 import javax.swing.JOptionPane;
 
@@ -56,7 +54,7 @@ public class LoginController {
 					
 					NegozioModel nm = new NegozioModel(negozio);
 					
-					NegozioController nc = new NegozioController();
+					NegozioController nc = new NegozioController(nm);
 					
 					NegozioView nv = new NegozioView(nc,nm);
 					
@@ -75,7 +73,7 @@ public class LoginController {
 					MagazzinoView mv =new MagazzinoView(mc,mm);
 
 					//run SEGRETERIA
-					mv.run();
+					//mv.run();
 
 					break;
 				case "SEG":	
