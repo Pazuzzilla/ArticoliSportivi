@@ -13,12 +13,14 @@ public class OrdineModel{
 	private String articolo;
 	private int quantità;
 	private float prezzo;
+	private float prezzo_complessivo;
 
 
 	public OrdineModel(Negozio negozio){
 		this.neg = negozio;
 		negO = neg.getNegozioid();
 		codiceO = 0;
+
 
 		Date dataO = new Date();
 		SimpleDateFormat x = new SimpleDateFormat("y-MM-d");
@@ -27,6 +29,7 @@ public class OrdineModel{
 		articolo = new String();
 		quantità = 0;
 		prezzo = 0;
+		prezzo_complessivo = 0;
 	}
 	
 	public Negozio getNeg() {
@@ -47,6 +50,10 @@ public class OrdineModel{
 
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
+	}
+
+	public void setPrezzo_complessivo(float prezzo_complessivo) {
+		this.prezzo_complessivo = prezzo_complessivo;
 	}
 
 	public String getDataO() {
@@ -75,5 +82,9 @@ public class OrdineModel{
 
 	public String getNegO() {
 		return negO;
+	}
+
+	public float getPrezzo_complessivo() {
+		return prezzo_complessivo;
 	}
 }

@@ -30,6 +30,7 @@ public class NuovoArticoloView extends JFrame {
 	private NuovoArticoloController NAC;
 	private NuovoArticoloObserved NAO;
 	private JTextField textField_3;
+	private JTextField textField_4;
 
 
 	/**
@@ -41,7 +42,7 @@ public class NuovoArticoloView extends JFrame {
 		NAC=nac;
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 608, 251);
+		setBounds(100, 100, 608, 303);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -113,6 +114,17 @@ public class NuovoArticoloView extends JFrame {
 		sl_contentPane.putConstraint(SpringLayout.EAST, textField_3, 465, SpringLayout.EAST, lblNewLabel);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
+		
+		JLabel lblPrezzo = new JLabel("Prezzo:");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblPrezzo, 20, SpringLayout.SOUTH, lblNewLabel);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblPrezzo, 0, SpringLayout.WEST, lblNomeArticolo);
+		contentPane.add(lblPrezzo);
+		
+		textField_4 = new JTextField();
+		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_4, -5, SpringLayout.NORTH, lblPrezzo);
+		sl_contentPane.putConstraint(SpringLayout.EAST, textField_4, 0, SpringLayout.EAST, textField_1);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
 	}
 	
 
@@ -136,7 +148,7 @@ public class NuovoArticoloView extends JFrame {
 	
 	public void insert() throws SQLException {
 		NuovoArticoloController nac=this.NAC;	
-		nac.insert(textField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText());
+		nac.insert(textField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText(),textField_4.getText());
 	}
 	
 	
@@ -170,6 +182,7 @@ public class NuovoArticoloView extends JFrame {
 				textField_1.setText("");
 				textField_2.setText("");
 				textField_3.setText("");
+				textField_4.setText("");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

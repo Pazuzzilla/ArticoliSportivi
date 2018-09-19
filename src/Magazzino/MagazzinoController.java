@@ -16,7 +16,7 @@ public class MagazzinoController {
 	
 	public void openGI() {
 		//Model Gestione Ingressi
-		GestioneIngressiModel gim=new GestioneIngressiModel();
+		//GestioneIngressiModel gim=new GestioneIngressiModel();
 		//Controller GestioneIngressi
 		//GestioneIngressiController gic= new GestioneIngressiController(gim);
 		//View GestioneIngressi

@@ -14,6 +14,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 public class NegozioView extends JFrame {
 
@@ -29,7 +30,7 @@ public class NegozioView extends JFrame {
 	 */
 	public NegozioView(NegozioController sc, NegozioModel sm) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 416, 290);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -38,12 +39,12 @@ public class NegozioView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnStorico = new JButton("Storico");
-		btnStorico.setBounds(5, 5, 197, 253);
+		btnStorico.setBounds(6, 5, 197, 253);
 		contentPane.add(btnStorico);
 		btnStorico.setAction(action);
 		
 		JButton btnOrdine = new JButton("Ordine");
-		btnOrdine.setBounds(229, 5, 197, 253);
+		btnOrdine.setBounds(215, 5, 197, 253);
 		btnOrdine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}

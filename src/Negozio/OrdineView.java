@@ -23,6 +23,7 @@ public class OrdineView extends JFrame  {
 	private OrdineModel oM;
 	private OrdineController oC;
 	private int numriga;
+	private JTextField textField;
 
 
 
@@ -46,7 +47,7 @@ public class OrdineView extends JFrame  {
 		contentPane.add(lblInserireArticoloDa);
 		
 		textArt = new JTextField();
-		textArt.setBounds(315, 14, 230, 19);
+		textArt.setBounds(315, 14, 398, 19);
 		contentPane.add(textArt);
 		textArt.setColumns(10);
 		
@@ -66,14 +67,14 @@ public class OrdineView extends JFrame  {
 		
 		JButton btnInviaOrdine = new JButton("Invia Ordine");
 		btnInviaOrdine.setAction(action_1);
-		btnInviaOrdine.setBounds(719, 392, 101, 29);
+		btnInviaOrdine.setBounds(42, 392, 101, 29);
 		contentPane.add(btnInviaOrdine);
 		
 		
 		//bottone che elimina la finestra
 		JButton btnEliminaOrdine = new JButton("Elimina Ordine");
 		btnEliminaOrdine.setAction(action_2);
-		btnEliminaOrdine.setBounds(564, 392, 149, 29);
+		btnEliminaOrdine.setBounds(155, 392, 149, 29);
 		contentPane.add(btnEliminaOrdine);
 	
 		JScrollPane scrollPane = new JScrollPane();
@@ -137,9 +138,18 @@ public class OrdineView extends JFrame  {
 		));
 
 		scrollPane.setViewportView(table);
+		
+		JLabel lblPrezzoComplessivoOrdine = new JLabel("prezzo complessivo ordine:");
+		lblPrezzoComplessivoOrdine.setBounds(503, 392, 185, 16);
+		contentPane.add(lblPrezzoComplessivoOrdine);
+		
+		textField = new JTextField();
+		textField.setBounds(700, 387, 130, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
 	}
 	
-	// creo righe di ordine che andranno passate alla finestr NEGOZIO
+	// creo righe di ordine che andranno passate alla finestra NEGOZIO
 
 	
 	public void run() {
@@ -163,8 +173,7 @@ public class OrdineView extends JFrame  {
 
 		//se ha prodotto un valore uguale a zero di prezzo non è utile ai fini dell'ordine e quindi la riga non viene inserita
 		if (om.getPrezzo()==0.0) {
-			JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " non presente nel sistema");
-
+			JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " non presente in magazzino");
 
 			//System.out.println(rigaO[3] + " " + rigaO[5]);
 			//System.out.println(rigaO[0] + " " + rigaO[1] + " " + rigaO[2] + " " + rigaO[3] + " " + rigaO[4] + " " + rigaO[5]);
@@ -178,15 +187,50 @@ public class OrdineView extends JFrame  {
 			rigaO[4] = om.getQuantità();
 			rigaO[5] = om.getPrezzo();
 
-			for (int j = 0; j < 6; j++) {
+			boolean b= false;
 
-				table.setValueAt(rigaO[j], numriga, j);
+			//se ho già inserito almeno una riga di ordine
+			if (numriga>0) {
 
+				//si assicura che nessuno degli ordini prima si ripeta
+				for(int j = numriga-1; j >= 0; j--){
+
+					String z = table.getValueAt(j,3).toString();
+					if (z.equals(om.getArticolo())){
+						// se si ripete b viene settato true
+						b=true;
+					}
+
+				}
 			}
-			numriga++;
+
+			//se non si è ripetuto inserisce come da programma
+			if (b == false) {
+				for (int j = 0; j < 6; j++) {
+
+					table.setValueAt(rigaO[j], numriga, j);
+
+				}
+				numriga++;
+			}
+			//altrimenti scrive un messaggio e non fa nulla
+			else{
+				JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " già presente nell'ordine");
+			}
 		}
 	}
-	
+
+
+	// metodo per chiedere al controller di far partire l'inserimento della riga di ordine nel database
+	public void insert(){
+		OrdineModel om = oM;
+		OrdineController oc =oC;
+		oC.insert();
+
+
+	}
+
+
 	// inner class per inserire articolo in tabella
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
@@ -197,6 +241,9 @@ public class OrdineView extends JFrame  {
 
 			aggiugi(textArt.getText(),Integer.parseInt(textQ.getText()));
 
+			Object o = oM.getPrezzo_complessivo();// devo mettere sul prezzo complessivo il prezzo complessivo del modello
+			String s = o.toString();
+			textField.setText(s);
 		}
 	}
 	
@@ -211,6 +258,28 @@ public class OrdineView extends JFrame  {
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
+
+			// disabilito il bottone inserisci
+
+
+			JButton b = (JButton) e.getSource();
+			b.setEnabled(false);
+
+
+			//per inserire passo al modello di volta in volta un articolo diverso
+			//e lo faccio insertire dal controller
+			//tramite una chiamaata a database
+
+			for (int j = 0; j< numriga; j++){
+
+				oM.setArticolo(table.getValueAt(j,3).toString());
+				oM.setQuantità(Integer.parseInt(table.getValueAt(j,4).toString()));
+				oM.setPrezzo(Float.parseFloat(table.getValueAt(j,5).toString()));
+
+				insert();
+				JOptionPane.showMessageDialog(null, "ordine inserito ");
+			}
+
 		}
 	}
 
@@ -228,7 +297,10 @@ public class OrdineView extends JFrame  {
 		}
 		public void actionPerformed(ActionEvent e) {
 
+
 			numriga = 0;
+			oM.setPrezzo_complessivo(0);
+			textField.setText("");
 			
 			table.setModel(new DefaultTableModel(
 					new Object[][] {

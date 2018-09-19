@@ -37,8 +37,16 @@ public class NuovoArticoloController {
 	}
 
 	//inserimento articolo tramite query su database
-	public void insert(String nome,String sport, String materiale, String descrizione ) throws SQLException {
-			DataSport.getInstance().insertarticletipe(nome,sport,materiale,descrizione);
+	public void insert(String nome,String sport, String materiale, String descrizione,String prezzo ) throws SQLException {
+
+		try {
+			float f = Float.parseFloat(prezzo);
+			DataSport.getInstance().insertarticletipe(nome,sport,materiale,descrizione,f);
+		} catch(NumberFormatException e ){
+
+			JOptionPane.showMessageDialog(null,"errore inserimento prezzo ");
+		}
+
 			JOptionPane.showMessageDialog(null,"Articolo inserito ");
 
 	}

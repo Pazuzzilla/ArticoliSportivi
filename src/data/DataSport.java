@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -121,16 +122,23 @@ public class DataSport {
 	}
 
 	// insertarticletipe metodo di inserimento tipo articolo
-	public void insertarticletipe(String nome, String sport, String materiale, String descrizione) throws SQLException {
-		try (PreparedStatement st = conn.prepareStatement("INSERT INTO articolo(nome,sport,materiale,descrizione) VALUES(?,?,?,?)")) {
+	public void insertarticletipe(String nome, String sport, String materiale, String descrizione, float prezzo) throws SQLException {
+			try (PreparedStatement st = conn.prepareStatement("INSERT INTO articolo(nome,sport,materiale,descrizione,prezzo) VALUES(?,?,?,?,?)")) {
 
-			st.setString(1, nome);
-			st.setString(2, sport);
-			st.setString(3, materiale);
-			st.setString(4, descrizione);
+				st.setString(1, nome);
+				st.setString(2, sport);
+				st.setString(3, materiale);
+				st.setString(4, descrizione);
+				st.setFloat(5,prezzo);
 
-			st.executeQuery();
 
+				boolean b;
+
+				b=st.execute();
+
+				if(b==true){
+					JOptionPane.showMessageDialog(null,"Errore inserimento ");
+				}
 		}
 
 	}
@@ -251,21 +259,36 @@ public class DataSport {
 		float prezzo=0;
 		ResultSet rs1 = null;
 
+		boolean b = false;
 
-		try (PreparedStatement st = conn.prepareStatement("SELECT nome,prezzo FROM articoloregistrato WHERE nome=?")) {
+
+		// trucco per inserire la riga di ordine
+		// avendo modificato le tabelle cerchiamo se è registrato
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT nome FROM articolo WHERE nome=?")) {
 			st.setString(1, articolo);
-			rs1 = st.executeQuery();
-
-				while (rs1.next()) {
-					prezzo = rs1.getFloat("prezzo");
-				}
-
-			rs1.close();
+			b = st.execute();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		if (b == true) {
+
+			try (PreparedStatement st = conn.prepareStatement("SELECT nome,prezzo FROM articolo WHERE nome=?")) {
+				st.setString(1, articolo);
+				rs1 = st.executeQuery();
+
+				while (rs1.next()) {
+					prezzo = rs1.getFloat("prezzo");
+				}
+
+				rs1.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		prezzo = prezzo*quantità;
 		return prezzo;
 	}
@@ -331,6 +354,26 @@ public class DataSport {
 		}
 
 		return oldPosizione;
+
+	}
+
+	// inserimento di una riga di ordine, chiamato da OrdineController
+	public void InsertOrdine(int codiceO, String negO, String dataO, String articolo, int quantità, float prezzo) {
+		try (PreparedStatement st = conn.prepareStatement("INSERT INTO ordine(codice_ordine,cod_negozio,data_ordine,nome_articolo,quantità,prezzo_tot) VALUES(?,?,?,?,?,?)")) {
+
+			st.setInt(1, codiceO);
+			st.setString(2, negO);
+			st.setString(3, dataO);
+			st.setString(4, articolo);
+			st.setInt(5, quantità);
+			st.setFloat(6, prezzo);
+
+			st.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Ordine non inserito, controllare dati e riprovare");
+		}
 
 	}
 }
