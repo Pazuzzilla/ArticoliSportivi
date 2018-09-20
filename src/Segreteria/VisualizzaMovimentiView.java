@@ -103,7 +103,7 @@ public class VisualizzaMovimentiView extends JFrame {
 	}
 
 
-	//metodo che ritornerà dopo una query su database i valori da stampare
+	//metodo che ritornera' dopo una query su database i valori da stampare
 	public void visualizza(String negozio) throws SQLException {
 		VisualizzaMovimentiModel vmm= vMM;
 		VisualizzaMovimentiController vmc= vMC;
@@ -125,7 +125,7 @@ public class VisualizzaMovimentiView extends JFrame {
 		int i=vMM.getHowMany();
 		int[][] ordineUscita=vMM.getOrdineUscita();
 
-		//setto la nuova tabella che avrà solo le righe necessarie
+		//setto la nuova tabella che avra' solo le righe necessarie
 		table.setModel(new DefaultTableModel(new Object[i][2], new String[]{"Ordine", "Uscita"}));
 
 
@@ -140,7 +140,7 @@ public class VisualizzaMovimentiView extends JFrame {
 		}
 	}
 
-	//classe privata per far partire il comando visualizza dopo che si è premuto il bottone
+	//classe privata per far partire il comando visualizza dopo che si e' premuto il bottone
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "Visualizza");

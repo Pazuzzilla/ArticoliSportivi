@@ -43,7 +43,7 @@ public class Negozio extends JFrame {
 		
 
 		
-		//il bottone fa partire la finestra di nuovo ordine che si trova già pronta nel costruttore
+		//il bottone fa partire la finestra di nuovo ordine che si trova gia' pronta nel costruttore
 		JButton btnNewButton = new JButton("Nuovo Ordine");
 		
 		btnNewButton.addActionListener(new ActionListener() {

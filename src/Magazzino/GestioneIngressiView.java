@@ -55,7 +55,7 @@ public class GestioneIngressiView extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblQuantit = new JLabel("Quantità:");
+		JLabel lblQuantit = new JLabel("Numero Pezzi:");
 		lblQuantit.setBounds(44, 82, 61, 16);
 		contentPane.add(lblQuantit);
 		
@@ -106,6 +106,7 @@ public class GestioneIngressiView extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				
@@ -190,7 +191,7 @@ public class GestioneIngressiView extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	// metodo per verificare se la data inserita come data di produzione è valida
+	// metodo per verificare se la data inserita come data di produzione e' valida
 	public static boolean isDateValid (int day, int month, int year) {
 		GregorianCalendar cal = new GregorianCalendar(year, month - 1, day);
 		cal.setLenient(false);
@@ -204,7 +205,7 @@ public class GestioneIngressiView extends JFrame {
 	}
 
 
-	public void aggiugi(String articolo, int  quantità){
+	public void aggiugi(String articolo, int  quantita){
 		GestioneIngressiModel gim = this.gIM;
 		GestioneIngressiController gic = this.gIC;
 
@@ -213,7 +214,7 @@ public class GestioneIngressiView extends JFrame {
 		boolean b=gic.aggiungi();
 		Object[] rigaO = new Object[6];
 
-		//se ha prodotto un valore uguale a zero di prezzo non è utile ai fini dell'ordine e quindi la riga non viene inserita
+		//se ha prodotto un valore uguale a zero di prezzo non e' utile ai fini dell'ordine e quindi la riga non viene inserita
 
 		rigaO[0] = gim.getCodiceIngresso();
 		rigaO[1] = gim.getNewCodiceArticolo();
@@ -222,10 +223,11 @@ public class GestioneIngressiView extends JFrame {
 		rigaO[4] = gim.getDataOS();
 		rigaO[5] = gim.getPosizione();
 
+		table.setModel(new DefaultTableModel(new Object[quantita][6], new String[]{"codice ingresso", "codice articolo", "nome articolo", "data produzione", "data ingresso","posizione"}));
 
 			if (b == true) {
 				//"codice ingresso", "codice articolo", "nome articolo", "data produzione", "data ingresso","posizione"
-				for (int j = 0; j < Integer.parseInt(textField_1.getText()) ; j++) {
+				for (int j = 0; j < quantita ; j++) {
 
 					//questa la setto qui per rendere il tutto progressivo
 					rigaO[1] = gim.getNewCodiceArticolo();
@@ -277,20 +279,31 @@ public class GestioneIngressiView extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 
-			boolean b=false;
+			boolean b  = false;
+			boolean b1 = false;
 
+			// prima di iniziare l'inserimento viene verificato che i campi che voglio come integer siano di quel tipo
+			// e subito dopo se la data di produzione e' valida come tipo di dato Date
 
-			// prima di iniziare l'inserimento viene verificata la data di inserimento inserita dall'utente
-			b = isDateValid(Integer.parseInt(day.getText()), Integer.parseInt(month.getText()), Integer.parseInt(year.getText()));
 
 			try{
 				Integer.parseInt(textField_1.getText());
+				Integer.parseInt(day.getText());
+				Integer.parseInt(month.getText());
+				Integer.parseInt(year.getText());
+				b1 = true;
 
 			} catch( NumberFormatException errore ){
-				JOptionPane.showMessageDialog(null, "quantità non valida");
-				b = false;
+
+				b1 = false;
 
 			}
+			// se gli interi sono giusti gestisco le date
+			if(b1 == true) {
+				b = isDateValid(Integer.parseInt(day.getText()), Integer.parseInt(month.getText()), Integer.parseInt(year.getText()));
+			}
+
+			//continuo con l'inserimento
 			if(b == true){
 				String dataProd= year.getText()+"-"+month.getText()+"-"+day.getText();
 				gIM.setDataIngresso(dataProd);
@@ -298,7 +311,7 @@ public class GestioneIngressiView extends JFrame {
 				aggiugi(textField.getText(),Integer.parseInt(textField_1.getText()));
 			}
 			else{
-				JOptionPane.showMessageDialog(null, "data non valida");
+				JOptionPane.showMessageDialog(null, "Informazioni inserite non valide!");
 			}
 
 		}
@@ -337,6 +350,10 @@ public class GestioneIngressiView extends JFrame {
 			//numriga = 0;
 			textField.setText("");
 			textField_1.setText("");
+			day.setText("");
+			month.setText("");
+			year.setText("");
+			text_newub.setText("");
 
 			table.setModel(new DefaultTableModel(
 					new Object[][] {

@@ -11,13 +11,13 @@ public class GestioneIngressiModel {
     private int newCodiceArticolo;
     private String posizione;
     private String nomeArticolo;
-    private int quantità;
+    private int numeropezzi;
 
 
 
 
     public GestioneIngressiModel(){
-        quantità =0;
+        numeropezzi =0;
         dataProd=new String();
 
         Date dataO = new Date();
@@ -30,8 +30,8 @@ public class GestioneIngressiModel {
         nomeArticolo = new String();
     }
 
-    public void setQuantità(int quantità) {
-        this.quantità = quantità;
+    public void setNumeroPezzi(int numeropezzi) {
+        this.numeropezzi = numeropezzi;
     }
 
     public void setDataIngresso(String dataIngresso) {
@@ -82,7 +82,7 @@ public class GestioneIngressiModel {
         return nomeArticolo;
     }
 
-    public int getQuantità() {
-        return quantità;
+    public int getNumeroPezzi() {
+        return numeropezzi;
     }
 }

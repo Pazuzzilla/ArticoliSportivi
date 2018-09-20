@@ -19,7 +19,7 @@ public class OrdineController{
 		float prezzo = 0;
 		int new_ordine = 0;
 		om.setPrezzo(0);
-		prezzo = DataSport.getInstance().verifica(om.getArticolo(),om.getQuantità());
+		prezzo = DataSport.getInstance().verifica(om.getArticolo(),om.getNumeroPezzi());
 		om.setPrezzo(prezzo);
 
 		// ora abbiamo il prezzo totale e lo ho settato adesso devo generare un nuovo codice per l'ordine
@@ -37,9 +37,9 @@ public class OrdineController{
 	//metodo invocato dalla view di Ordine per richiedere l'aggiunta di una riga di ordine nel database
 	public void insert() {
 
-		//"Negozio", "codice ordine", "data", "articolo", "quantità","Prezzo totale"
+		//"Negozio", "codice ordine", "data", "articolo", "numeropezzi","Prezzo totale"
 
-		DataSport.getInstance().InsertOrdine(om.getCodiceO(),om.getNegO(),om.getDataOS(), om.getArticolo(),om.getQuantità(),om.getPrezzo());
+		DataSport.getInstance().InsertOrdine(om.getCodiceO(),om.getNegO(),om.getDataOS(), om.getArticolo(),om.getNumeroPezzi(),om.getPrezzo());
 		//om.setPrezzo_complessivo( om.getPrezzo_complessivo()+ om.getPrezzo());
 
 	}

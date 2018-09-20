@@ -231,7 +231,7 @@ public class DataSport {
 
 		Object[][] o = new Object[6][i];
 
-		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM Ordine\nWHERE cod_negozio=?")) {
+		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM ordine\nWHERE cod_negozio=?")) {
 			st.setString(1,negID );
 			rs1 = st.executeQuery();
 
@@ -240,7 +240,7 @@ public class DataSport {
 				o[0][j] = rs1.getInt("codice_ordine");
 				o[1][j] = rs1.getString("cod_negozio");
 				o[2][j] = rs1.getString("nome_articolo");
-				o[3][j] = rs1.getInt("quantità");
+				o[3][j] = rs1.getInt("numeropezzi");
 				o[4][j]	= rs1.getDate("data_ordine");
 				o[5][j] = rs1.getFloat("prezzo_tot");
 			}
@@ -255,7 +255,7 @@ public class DataSport {
 
 
 	// metodo usato da OrdineController per verificare se un articolo esiste in magazzino e in caso prenderne il prezzo totale per l'ordine
-	public float verifica(String articolo, int quantità) {
+	public float verifica(String articolo, int numeropezzi) {
 		float prezzo=0;
 		ResultSet rs1 = null;
 
@@ -263,7 +263,7 @@ public class DataSport {
 
 
 		// trucco per inserire la riga di ordine
-		// avendo modificato le tabelle cerchiamo se è registrato
+		// avendo modificato le tabelle cerchiamo se e' registrato
 
 		try (PreparedStatement st = conn.prepareStatement("SELECT nome FROM articolo WHERE nome=?")) {
 			st.setString(1, articolo);
@@ -289,7 +289,7 @@ public class DataSport {
 				e.printStackTrace();
 			}
 		}
-		prezzo = prezzo*quantità;
+		prezzo = prezzo*numeropezzi;
 		return prezzo;
 	}
 
@@ -358,14 +358,14 @@ public class DataSport {
 	}
 
 	// inserimento di una riga di ordine, chiamato da OrdineController
-	public void InsertOrdine(int codiceO, String negO, String dataO, String articolo, int quantità, float prezzo) {
-		try (PreparedStatement st = conn.prepareStatement("INSERT INTO ordine(codice_ordine,cod_negozio,data_ordine,nome_articolo,quantità,prezzo_tot) VALUES(?,?,?,?,?,?)")) {
+	public void InsertOrdine(int codiceO, String negO, String dataO, String articolo, int numeropezzi, float prezzo) {
+		try (PreparedStatement st = conn.prepareStatement("INSERT INTO ordine(codice_ordine,cod_negozio,data_ordine,nome_articolo,numeropezzi,prezzo_tot) VALUES(?,?,?,?,?,?)")) {
 
 			st.setInt(1, codiceO);
 			st.setString(2, negO);
 			st.setString(3, dataO);
 			st.setString(4, articolo);
-			st.setInt(5, quantità);
+			st.setInt(5, numeropezzi);
 			st.setFloat(6, prezzo);
 
 			st.execute();
@@ -384,7 +384,7 @@ public class DataSport {
 		int control = 0;
 
 		// trucco per inserire la riga di ordine
-		// avendo modificato le tabelle cerchiamo se è registrato
+		// avendo modificato le tabelle cerchiamo se e' registrato
 
 		try (PreparedStatement st = conn.prepareStatement("SELECT nome FROM articolo WHERE nome=?")) {
 			st.setString(1, nomeArticolo);

@@ -51,7 +51,7 @@ public class OrdineView extends JFrame  {
 		contentPane.add(textArt);
 		textArt.setColumns(10);
 		
-		lblInserireQuantit = new JLabel("Inserire quantità");
+		lblInserireQuantit = new JLabel("Inserire numeropezzi");
 		lblInserireQuantit.setBounds(43, 49, 185, 13);
 		contentPane.add(lblInserireQuantit);
 		
@@ -133,7 +133,7 @@ public class OrdineView extends JFrame  {
 					{null, null, null, null, null, null},
 			},
 			new String[] {
-				"Negozio", "codice ordine", "data", "articolo", "quantità","Prezzo totale"
+				"Negozio", "codice ordine", "data", "articolo", "numeropezzi","Prezzo totale"
 			}
 		));
 
@@ -161,17 +161,17 @@ public class OrdineView extends JFrame  {
 	}
 
 	//metodo per aggiungere una riga alla tabella articolo
-	public void aggiugi(String articolo, int  quantità){
+	public void aggiugi(String articolo, int  numeropezzi){
 		OrdineModel om = this.oM;
 		OrdineController oc = this.oC;
 
 		oM.setArticolo(articolo);
-		oM.setQuantità(quantità);
+		oM.setNumeroPezzi(numeropezzi);
 
 		oc.aggiungi();
 		Object[] rigaO = new Object[6];
 
-		//se ha prodotto un valore uguale a zero di prezzo non è utile ai fini dell'ordine e quindi la riga non viene inserita
+		//se ha prodotto un valore uguale a zero di prezzo non e' utile ai fini dell'ordine e quindi la riga non viene inserita
 		if (om.getPrezzo()==0.0) {
 			JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " non presente in magazzino");
 
@@ -184,12 +184,12 @@ public class OrdineView extends JFrame  {
 			rigaO[1] = om.getCodiceO();
 			rigaO[2] = om.getDataOS();
 			rigaO[3] = om.getArticolo();
-			rigaO[4] = om.getQuantità();
+			rigaO[4] = om.getNumeroPezzi();
 			rigaO[5] = om.getPrezzo();
 
 			boolean b= false;
 
-			//se ho già inserito almeno una riga di ordine
+			//se ho gia' inserito almeno una riga di ordine
 			if (numriga>0) {
 
 				//si assicura che nessuno degli ordini prima si ripeta
@@ -204,7 +204,7 @@ public class OrdineView extends JFrame  {
 				}
 			}
 
-			//se non si è ripetuto inserisce come da programma
+			//se non si e' ripetuto inserisce come da programma
 			if (b == false) {
 				for (int j = 0; j < 6; j++) {
 
@@ -215,7 +215,7 @@ public class OrdineView extends JFrame  {
 			}
 			//altrimenti scrive un messaggio e non fa nulla
 			else{
-				JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " già presente nell'ordine");
+				JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " gia' presente nell'ordine");
 			}
 		}
 	}
@@ -273,7 +273,7 @@ public class OrdineView extends JFrame  {
 			for (int j = 0; j< numriga; j++){
 
 				oM.setArticolo(table.getValueAt(j,3).toString());
-				oM.setQuantità(Integer.parseInt(table.getValueAt(j,4).toString()));
+				oM.setNumeroPezzi(Integer.parseInt(table.getValueAt(j,4).toString()));
 				oM.setPrezzo(Float.parseFloat(table.getValueAt(j,5).toString()));
 
 				insert();
@@ -348,7 +348,7 @@ public class OrdineView extends JFrame  {
 							{null, null, null, null, null, null},
 					},
 					new String[] {
-						"Negozio", "codice ordine", "data", "articolo", "quantità","Prezzo totale"
+						"Negozio", "codice ordine", "data", "articolo", "numeropezzi","Prezzo totale"
 					}
 				));
 

@@ -18,7 +18,7 @@ public class NuovoArticoloController {
 		NAO= nao;
 	}
 	
-	// verifica se l'articolo è nel database
+	// verifica se l'articolo e' nel database
 	public void Exist(String Articolo) {
 		boolean b=false;
 		NuovoArticoloObserved nao=this.NAO;
@@ -29,7 +29,7 @@ public class NuovoArticoloController {
 			e.printStackTrace();
 		}
 		if (b==true) {
-			JOptionPane.showMessageDialog(null,"Articolo già presente nel sistema! ");
+			JOptionPane.showMessageDialog(null,"Articolo gia' presente nel sistema! ");
 		}
 		else {
 			JOptionPane.showMessageDialog(null,"Articolo non presente nel sistema ");

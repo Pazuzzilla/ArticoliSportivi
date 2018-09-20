@@ -11,7 +11,7 @@ public class OrdineModel{
 	private int codiceO;
 	private String dataOS;
 	private String articolo;
-	private int quantità;
+	private int numeropezzi;
 	private float prezzo;
 	private float prezzo_complessivo;
 
@@ -27,7 +27,7 @@ public class OrdineModel{
 		dataOS = x.format(dataO);
 
 		articolo = new String();
-		quantità = 0;
+		numeropezzi = 0;
 		prezzo = 0;
 		prezzo_complessivo = 0;
 	}
@@ -44,8 +44,8 @@ public class OrdineModel{
 		this.codiceO = codiceO;
 	}
 
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
+	public void setNumeroPezzi(int numeropezzi) {
+		this.numeropezzi = numeropezzi;
 	}
 
 	public void setPrezzo(float prezzo) {
@@ -68,8 +68,8 @@ public class OrdineModel{
 		return codiceO;
 	}
 
-	public int getQuantità() {
-		return quantità;
+	public int getNumeroPezzi() {
+		return numeropezzi;
 	}
 
 	public String getArticolo() {

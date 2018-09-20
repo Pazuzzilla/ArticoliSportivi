@@ -80,7 +80,7 @@ public class Nuovo_Ordine extends JFrame  {
 		contentPane.add(textArt);
 		textArt.setColumns(10);
 		
-		lblInserireQuantit = new JLabel("Inserire quantità");
+		lblInserireQuantit = new JLabel("Inserire numero pezzi");
 		sl_contentPane.putConstraint(SpringLayout.NORTH, lblInserireQuantit, 16, SpringLayout.SOUTH, lblInserireArticoloDa);
 		sl_contentPane.putConstraint(SpringLayout.WEST, lblInserireQuantit, 0, SpringLayout.WEST, lblInserireCodiceNegozio);
 		sl_contentPane.putConstraint(SpringLayout.EAST, lblInserireQuantit, -749, SpringLayout.EAST, contentPane);
@@ -145,7 +145,7 @@ public class Nuovo_Ordine extends JFrame  {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"Negozio", "codice ordine", "data", "articolo", "quantità"
+				"Negozio", "codice ordine", "data", "articolo", "numero pezzi"
 			}
 		));
      
