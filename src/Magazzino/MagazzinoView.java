@@ -82,9 +82,16 @@ public class MagazzinoView extends JFrame {
 		
 		//c1.openVMM();
 	}
-	
-	
-	
+
+	public void openGI() {
+		MagazzinoController c1 =this.mC;
+
+		c1.openGI();
+	}
+
+
+
+
 	//Azione per far Partire l'inerfaccia di nuovoarticolo
 	private class Apripannello extends AbstractAction {
 		public Apripannello() {
@@ -92,7 +99,7 @@ public class MagazzinoView extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
-			//openGI();
+			openGI();
 		}
 	}
 	

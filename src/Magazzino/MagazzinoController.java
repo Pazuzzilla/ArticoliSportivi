@@ -16,13 +16,13 @@ public class MagazzinoController {
 	
 	public void openGI() {
 		//Model Gestione Ingressi
-		//GestioneIngressiModel gim=new GestioneIngressiModel();
+		GestioneIngressiModel gim=new GestioneIngressiModel();
 		//Controller GestioneIngressi
-		//GestioneIngressiController gic= new GestioneIngressiController(gim);
+		GestioneIngressiController gic= new GestioneIngressiController(gim);
 		//View GestioneIngressi
-		//GestioneIngressiView giv= new GestioneIngressiView(gic,gim);
+		GestioneIngressiView giv= new GestioneIngressiView(gic,gim);
 		//run() Gestioneingressi
-		//giv.run();
+		giv.run();
 	}
 
 	public void openGU() {

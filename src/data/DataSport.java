@@ -211,15 +211,15 @@ public class DataSport {
 
 	// metodo per storico negozio
 	public Object[][] getStoNeg(String negID){
-		
+
 		int i = 0;
 		ResultSet rs = null;
 		ResultSet rs1 = null;
-		
+
 		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM Ordine\nWHERE cod_negozio=?")) {
 			st.setString(1,negID );
 			rs = st.executeQuery();
-			
+
 			while(rs.next()){
 				i++;
 			}
@@ -228,13 +228,13 @@ public class DataSport {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		Object[][] o = new Object[6][i];
-		
+
 		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM Ordine\nWHERE cod_negozio=?")) {
 			st.setString(1,negID );
 			rs1 = st.executeQuery();
-			
+
 			for(int j = 0; j < i; j++) {
 				rs1.next();
 				o[0][j] = rs1.getInt("codice_ordine");
@@ -249,7 +249,7 @@ public class DataSport {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return o;
 	}
 
@@ -374,6 +374,73 @@ public class DataSport {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null,"Ordine non inserito, controllare dati e riprovare");
 		}
+
+	}
+
+	public boolean verificaEsistenza(String nomeArticolo) {
+
+		boolean b = false;
+		ResultSet rs = null;
+		int control = 0;
+
+		// trucco per inserire la riga di ordine
+		// avendo modificato le tabelle cerchiamo se è registrato
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT nome FROM articolo WHERE nome=?")) {
+			st.setString(1, nomeArticolo);
+			rs = st.executeQuery();
+
+			while (rs.next()){
+				control++;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		if(control>0){
+			b = true;
+		}
+		return b;
+	}
+
+
+	public int new_Insert() {
+
+		ResultSet rs1 = null;
+		int nuovo_ingresso=0;
+		try (PreparedStatement st = conn.prepareStatement("SELECT MAX(codice_interno) AS ultimo_ingresso\nFROM ingresso;")) {
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				nuovo_ingresso  = rs1.getInt("ultimo_ordine");
+			}
+			nuovo_ingresso++;
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nuovo_ingresso;
+
+	}
+
+	public int new_codiceArticolo() {
+		ResultSet rs1 = null;
+		int nuovo_codice=0;
+		try (PreparedStatement st = conn.prepareStatement("SELECT MAX(articoloregistrato) AS ultimo_codice\nFROM codice;")) {
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				nuovo_codice  = rs1.getInt("ultimo_codice");
+			}
+			nuovo_codice++;
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nuovo_codice;
 
 	}
 }

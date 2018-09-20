@@ -285,9 +285,6 @@ public class OrdineView extends JFrame  {
 
 
 
-
-
-
 	
 	//inner class per eliminare ordine
 	private class SwingAction_2 extends AbstractAction {
