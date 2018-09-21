@@ -29,6 +29,8 @@ public class GestioneIngressiView extends JFrame {
 	private final Action action = new SwingAction_1();
 	private final Action action_1 = new SwingAction_2();
 	private final Action action_2 = new SwingAction();
+	private JButton btnAggiungiAIngresso;
+	private int numeropezzi;
 	
 
 
@@ -163,7 +165,7 @@ public class GestioneIngressiView extends JFrame {
 		));
 		scrollPane.setViewportView(table);
 		
-		JButton btnInserisci = new JButton("Inserisci");
+		JButton  btnInserisci = new JButton("Inserisci");
 		btnInserisci.setAction(action_1);
 		btnInserisci.setBounds(753, 449, 143, 43);
 		contentPane.add(btnInserisci);
@@ -173,7 +175,7 @@ public class GestioneIngressiView extends JFrame {
 		contentPane.add(day);
 		day.setColumns(10);
 		
-		JButton btnAggiungiAIngresso = new JButton("aggiungi ingresso");
+		btnAggiungiAIngresso = new JButton("aggiungi ingresso");
 		btnAggiungiAIngresso.setAction(action);
 		btnAggiungiAIngresso.setBounds(707, 33, 189, 29);
 		contentPane.add(btnAggiungiAIngresso);
@@ -260,6 +262,45 @@ public class GestioneIngressiView extends JFrame {
 
 
 
+	//metidi richiamato dalla inner class di inserimento per aggiornare gli ingressi e il magazzino
+	private void insertIngresso() {
+
+		GestioneIngressiModel gim = gIM;
+		GestioneIngressiController gic = gIC;
+
+		//gic.insertIngresso();
+
+
+		for (int j = 0; j< numeropezzi; j++){
+
+			gim.setNewCodiceArticolo(Integer.parseInt(table.getValueAt(j,1).toString()));
+
+			//System.out.println("codice articolo: "+gim.getNewCodiceArticolo());
+			//System.out.println("codice ingresso: "+gim.getCodiceIngresso());
+
+			//System.out.println(Integer.parseInt(table.getValueAt(j,0).toString()));
+
+			gic.insertArticolo();
+			gic.insertIngresso();
+
+		}
+
+	}
+
+
+
+	//metodo per chiedere al controller di aggiornare le entrate di questo mese
+	public void aggiornaEntrate(){
+
+		GestioneIngressiModel gim = gIM;
+		GestioneIngressiController gic = gIC;
+
+		String data = gim.getDataOS();
+		String annomese = data.substring(0,7);
+
+		gic.aggiornaEntrate(annomese);
+
+	}
 
 
 
@@ -269,15 +310,15 @@ public class GestioneIngressiView extends JFrame {
 
 
 
-
-
-	// Classe per inserire degli articoli nella schermata di entrata articoli
+	// inner Class per inserire degli articoli nella schermata di entrata articoli
 	private class SwingAction_1 extends AbstractAction {
 		public SwingAction_1() {
 			putValue(NAME, "Aggiungi ingresso");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
+
+			btnAggiungiAIngresso.setEnabled(false);
 
 			boolean b  = false;
 			boolean b1 = false;
@@ -287,10 +328,11 @@ public class GestioneIngressiView extends JFrame {
 
 
 			try{
-				Integer.parseInt(textField_1.getText());
+				numeropezzi = Integer.parseInt(textField_1.getText());
 				Integer.parseInt(day.getText());
 				Integer.parseInt(month.getText());
 				Integer.parseInt(year.getText());
+				gIM.setNumeroPezzi(numeropezzi);
 				b1 = true;
 
 			} catch( NumberFormatException errore ){
@@ -321,13 +363,7 @@ public class GestioneIngressiView extends JFrame {
 
 
 
-
-
-
-
-
-
-
+	//inner class per lanciare l'update del magazzino
 	private class SwingAction_2 extends AbstractAction {
 		public SwingAction_2() {
 			putValue(NAME, "Inserisci");
@@ -336,10 +372,91 @@ public class GestioneIngressiView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 
 
+			// inserisco i dati
+			insertIngresso();
+			//aggiorno le entrate
+
+			System.out.println(gIM.getNumeroPezzi());
+			aggiornaEntrate();
+			//resetto la finestra
+			reset();
+
+
 		}
 	}
 
 
+
+
+    //metodo per resettare la finestra
+	public void reset(){
+
+		textField.setText("");
+		textField_1.setText("");
+		day.setText("");
+		month.setText("");
+		year.setText("");
+		text_newub.setText("");
+		btnAggiungiAIngresso.setEnabled(true);
+
+		table.setModel(new DefaultTableModel(
+				new Object[][] {
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+				},
+				new String[] {
+						"codice ingresso", "codice articolo", "nome articolo", "data produzione", "data ingresso","posizione"
+				}
+		));
+
+	}
+
+
+
+	// inner Class per eliminare i dati visibili in tabella
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "Elimina");
@@ -348,65 +465,8 @@ public class GestioneIngressiView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 
 			//numriga = 0;
-			textField.setText("");
-			textField_1.setText("");
-			day.setText("");
-			month.setText("");
-			year.setText("");
-			text_newub.setText("");
+			reset();
 
-			table.setModel(new DefaultTableModel(
-					new Object[][] {
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-					},
-					new String[] {
-							"codice ingresso", "codice articolo", "nome articolo", "data produzione", "data ingresso","posizione"
-					}
-			));
 		}
 	}
 }

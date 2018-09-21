@@ -347,7 +347,7 @@ public class DataSport {
 			st.setString(1, posizione);
 			st.setString(2, articolo);
 
-			st.executeQuery();
+			st.execute();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -413,7 +413,7 @@ public class DataSport {
 			rs1 = st.executeQuery();
 
 			while (rs1.next()) {
-				nuovo_ingresso  = rs1.getInt("ultimo_ordine");
+				nuovo_ingresso  = rs1.getInt("ultimo_ingresso");
 			}
 			nuovo_ingresso++;
 			rs1.close();
@@ -425,10 +425,11 @@ public class DataSport {
 
 	}
 
+	// metodo per cercare ultoimo numero d'ordine
 	public int new_codiceArticolo() {
 		ResultSet rs1 = null;
 		int nuovo_codice=0;
-		try (PreparedStatement st = conn.prepareStatement("SELECT MAX(articoloregistrato) AS ultimo_codice\nFROM codice;")) {
+		try (PreparedStatement st = conn.prepareStatement("SELECT MAX(codice) AS ultimo_codice\nFROM articoloregistrato;")) {
 			rs1 = st.executeQuery();
 
 			while (rs1.next()) {
@@ -442,5 +443,120 @@ public class DataSport {
 		}
 		return nuovo_codice;
 
+	}
+
+	// metodo per aggiungere una riga di ingresso
+	public void insertIngresso(int codiceIngresso, int newCodiceArticolo, String dataOS) {
+		try (PreparedStatement st = conn.prepareStatement("INSERT INTO ingresso(codice_interno,articolo,data_ingresso) VALUES(?,?,?)")) {
+
+			st.setInt(1, codiceIngresso);
+			st.setInt(2, newCodiceArticolo);
+			st.setString(3, dataOS);
+
+			st.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Problemi nell'inserimento in memoria dell'ingresso");
+		}
+
+
+	}
+
+
+
+//metodo per inserire un articolo e registrarlo in magazzino, prima di inserirlo cerca il prezzo nella tabella articolo
+	public void insertArticolo(String nomeArticolo, int codiceIngresso, String dataOS, String dataIngresso, String posizione) {
+		float prezzo=0;
+		String toF="T";
+		ResultSet rs1 = null;
+
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT prezzo FROM articolo\nWHERE nome = ?;")) {
+			st.setString(1, nomeArticolo);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				prezzo = rs1.getFloat("prezzo");
+			}
+
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		try (PreparedStatement st1 = conn.prepareStatement("INSERT INTO articoloregistrato(nome,codice,prezzo,posizione,data_prod,presenza) VALUES(?,?,?,?,?,?)")) {
+
+			st1.setString(1, nomeArticolo);
+			st1.setInt(2, codiceIngresso);
+			st1.setFloat(3, prezzo);
+			st1.setString(4, posizione);
+			st1.setString(5, dataIngresso);
+			st1.setString(6, toF);
+
+			st1.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Ordine non inserito, controllare dati e riprovare");
+		}
+
+	}
+
+
+
+	//metodo per aggiornare la tabella di storicomagazzino
+	public void aggiornaEntrate(String annomese, int numeroPezzi) throws SQLException {
+
+		ResultSet rs1 = null;
+		int i = 0;
+		int pezziFinoAdOra=0;
+
+		// cerca se la combinazione anno e mese corrente e' gia' presente nel sistema
+		PreparedStatement st = conn.prepareStatement("SELECT * FROM storicomagazzino\nWHERE annomese = ?;");
+			st.setString(1, annomese);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				i++;
+				pezziFinoAdOra = rs1.getInt("ingressi");
+			}
+
+			rs1.close();
+
+			//se non è presente la variabile i sara' zero quindi inserisco la riga di questo mese
+			if (i < 1){
+				pezziFinoAdOra=numeroPezzi;
+
+				try (PreparedStatement st1 = conn.prepareStatement("INSERT INTO storicomagazzino(annomese,ingressi,uscite) VALUES(?,?,?)")) {
+
+					System.out.println( annomese+" "+pezziFinoAdOra);
+
+					st1.setString(1, annomese);
+					st1.setInt(2, pezziFinoAdOra);
+					st1.setInt(3, 0);
+
+					st.execute();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null,"Ordine non inserito, controllare dati e riprovare");
+				}
+
+			}//altrimenti se la trova aggiorna le quantita'
+			else {
+				pezziFinoAdOra=pezziFinoAdOra+numeroPezzi;
+
+				try (PreparedStatement st2 = conn.prepareStatement("UPDATE storicomagazzino SET ingressi=?\nWHERE annomese=?")) {
+					st2.setInt(1, pezziFinoAdOra);
+					st2.setString(2, annomese);
+
+					st2.execute();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 	}
 }

@@ -277,8 +277,9 @@ public class OrdineView extends JFrame  {
 				oM.setPrezzo(Float.parseFloat(table.getValueAt(j,5).toString()));
 
 				insert();
-				JOptionPane.showMessageDialog(null, "ordine inserito ");
+
 			}
+			JOptionPane.showMessageDialog(null, "ordine inserito ");
 
 		}
 	}
