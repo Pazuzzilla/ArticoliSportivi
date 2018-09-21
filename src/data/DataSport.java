@@ -537,7 +537,7 @@ public class DataSport {
 					st1.setInt(2, pezziFinoAdOra);
 					st1.setInt(3, 0);
 
-					st.execute();
+					st1.execute();
 
 				} catch (SQLException e) {
 					e.printStackTrace();

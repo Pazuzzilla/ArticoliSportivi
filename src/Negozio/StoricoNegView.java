@@ -38,10 +38,11 @@ public class StoricoNegView extends JFrame {
 		contentPane.setLayout(sl_contentPane);
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setEnabled(false);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, scrollPane, 18, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, scrollPane, -24, SpringLayout.SOUTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, scrollPane, 853, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, scrollPane, 883, SpringLayout.WEST, contentPane);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -51,7 +52,7 @@ public class StoricoNegView extends JFrame {
 				{null, null, null, null, null},
 			},
 			new String[] {
-				"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0","Prezzo totale"
+				"Codice Negozio", "Codice Ordine", "Articolo", "Numero Pezzi", "Data","Prezzo totale"
 			}
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(86);
@@ -77,7 +78,7 @@ public class StoricoNegView extends JFrame {
 		
 
 		//setto la nuova tabella che avra' solo le righe necessarie
-		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Negozio", "Codice Ordine", "Articolo", "Data", "Quantit\u00E0","Prezzo totale"}));
+		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Negozio", "Codice Ordine", "Articolo", "Numero Pezzi", "Data","Prezzo totale"}));
 
 		for (j=0;j<i-1;j++){
 

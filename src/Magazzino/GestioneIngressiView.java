@@ -49,20 +49,20 @@ public class GestioneIngressiView extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblArticolo = new JLabel("Articolo:");
-		lblArticolo.setBounds(44, 38, 61, 16);
+		lblArticolo.setBounds(27, 38, 61, 16);
 		contentPane.add(lblArticolo);
 		
 		textField = new JTextField();
-		textField.setBounds(117, 33, 342, 26);
+		textField.setBounds(125, 33, 317, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblQuantit = new JLabel("Numero Pezzi:");
-		lblQuantit.setBounds(44, 82, 61, 16);
+		lblQuantit.setBounds(27, 82, 106, 16);
 		contentPane.add(lblQuantit);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(117, 77, 118, 26);
+		textField_1.setBounds(125, 77, 138, 26);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
