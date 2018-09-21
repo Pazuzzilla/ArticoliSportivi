@@ -27,13 +27,13 @@ public class MagazzinoController {
 
 	public void openGU() {
 		//Model Nuovoarticolo
-		//GestioneUsciteModel gum =new GestioneUsciteModel();
+		GestioneUsciteModel gum = new GestioneUsciteModel();
 		//Controller Nuovoarticolo
-		//GestioneUsciteController guc= new GestioneUsciteController(gum);
+		GestioneUsciteController guc= new GestioneUsciteController(gum);
 		//View Nuovoarticolo
-		//GestioneUsciteView guv= new GestioneUsciteView(guc,gum);
+		GestioneUsciteView guv= new GestioneUsciteView(guc,gum);
 		//run() Nuovoarticolo
-		//guv.run();
+		guv.run();
 	}
 
 	public void openGA() {

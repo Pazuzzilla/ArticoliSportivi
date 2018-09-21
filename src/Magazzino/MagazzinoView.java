@@ -110,7 +110,7 @@ public class MagazzinoView extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
-			//openGU();
+			mC.openGU();
 		}
 	}
 

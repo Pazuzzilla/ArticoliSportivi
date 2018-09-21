@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -30,7 +32,7 @@ public class DataSport {
 			e1.printStackTrace();
 		}
 		try {
-			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Articoli sportivi", "postgres", "utente0");
+			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Articoli Sportivi", "postgres", "utente0");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -558,5 +560,24 @@ public class DataSport {
 					e.printStackTrace();
 				}
 			}
+	}
+	
+	public List<Integer> findOrdini() {
+		ResultSet rs1 = null;
+		List <Integer> v = new ArrayList();
+		try (PreparedStatement st = conn.prepareStatement("SELECT codice_ordine FROM ordine GROUP BY codice_ordine ;")){
+			rs1 = st.executeQuery();
+
+			while(rs1.next()) {
+				v.add(rs1.getInt("codice_ordine"));				
+				}
+			
+		rs1.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		//System.out.println("DDDD"+v);
+		return v;
 	}
 }
