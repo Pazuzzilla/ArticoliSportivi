@@ -312,7 +312,7 @@ public class GestioneUsciteView extends JFrame {
 
 
 
-
+//metodo per fare l'update della tabella
 	private class SwingAction_2 extends AbstractAction {
 		public SwingAction_2() {
 			putValue(NAME, "Spedisci");

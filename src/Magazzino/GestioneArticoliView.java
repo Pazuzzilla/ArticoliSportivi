@@ -3,16 +3,10 @@ package Magazzino;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 
 public class GestioneArticoliView extends JFrame {
 
@@ -108,7 +102,17 @@ public class GestioneArticoliView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 
 			//cambio la posizione dell'articolo e poi metto sul textfield_2 la vecchia posizione
-			gAM.setArticolo(Integer.parseInt(textField.getText().toString()));
+
+			int art=0;
+
+			try {
+				art = Integer.parseInt(textField.getText().toString());
+			}catch(NumberFormatException NFE){
+				JOptionPane.showMessageDialog(null, "Codice articolo non valido!");
+			}
+
+
+			gAM.setArticolo(art);
 			gAM.setNewPosizione(textField_2.getText());
 			cambioPos();
 			textField_1.setText(gAM.getOldPosizione());
