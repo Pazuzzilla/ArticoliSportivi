@@ -32,7 +32,7 @@ public class DataSport {
 			e1.printStackTrace();
 		}
 		try {
-			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Articoli Sportivi", "postgres", "utente0");
+			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Articoli sportivi", "postgres", "utente0");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -261,15 +261,26 @@ public class DataSport {
 		float prezzo=0;
 		ResultSet rs1 = null;
 
-		boolean b = false;
+		boolean b = true;
 
 
 		// trucco per inserire la riga di ordine
 		// avendo modificato le tabelle cerchiamo se e' registrato
 
-		try (PreparedStatement st = conn.prepareStatement("SELECT nome FROM articolo WHERE nome=?")) {
+		try (PreparedStatement st = conn.prepareStatement("SELECT nome FROM articoloregistrato WHERE nome=?")) {
+			int j = 0;
+			ResultSet r2=null;
+
 			st.setString(1, articolo);
-			b = st.execute();
+			r2=st.executeQuery();
+
+			while (r2.next()){
+				j++;
+			}
+
+			if(j<1){
+				b=false;
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -321,13 +332,13 @@ public class DataSport {
 
 	//metodo di interrogazione a databae chiamato da GestioneArticoliConttroller per settare la nuova posizione di articoli
 	//e ottenere quella vecchia
-	public String setNewPosition(String articolo, String posizione) {
+	public String setNewPosition(int articolo, String posizione) {
 
 		ResultSet rs1 = null;
 	    String oldPosizione= new String();
 
 		try (PreparedStatement st = conn.prepareStatement("SELECT * \nFROM articoloregistrato\nWHERE codice=?;")) {
-			st.setString(1, articolo);
+			st.setInt(1, articolo);
 			rs1 = st.executeQuery();
 
 			while (rs1.next()) {
@@ -347,7 +358,7 @@ public class DataSport {
 
 		try (PreparedStatement st = conn.prepareStatement("UPDATE articoloregistrato SET posizione=?\nWHERE codice=?")) {
 			st.setString(1, posizione);
-			st.setString(2, articolo);
+			st.setInt(2, articolo);
 
 			st.execute();
 

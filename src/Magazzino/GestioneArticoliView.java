@@ -108,7 +108,7 @@ public class GestioneArticoliView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 
 			//cambio la posizione dell'articolo e poi metto sul textfield_2 la vecchia posizione
-			gAM.setArticolo(textField.getText());
+			gAM.setArticolo(Integer.parseInt(textField.getText().toString()));
 			gAM.setNewPosizione(textField_2.getText());
 			cambioPos();
 			textField_1.setText(gAM.getOldPosizione());

@@ -14,7 +14,7 @@ public class GestioneArticoliController {
 
     public void cambioPos() {
 
-        String articolo=gAM.getArticolo();
+        int articolo=gAM.getArticolo();
         String newPosizione = gAM.getNewPosizione();
         String oldPosizione = DataSport.getInstance().setNewPosition(articolo, newPosizione);
         gAM.setOldPosizione(oldPosizione);

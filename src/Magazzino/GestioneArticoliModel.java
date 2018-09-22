@@ -4,16 +4,16 @@ import lib.GestioneIngressi;
 
 public class GestioneArticoliModel {
     private String newPosizione;
-    private String articolo;
+    private int articolo;
     private String oldPosizione;
 
     public GestioneArticoliModel(){
         newPosizione = new String();
-        articolo = new String();
+        articolo = 0;
         oldPosizione = new String();
     }
 
-    public void setArticolo(String articolo) {
+    public void setArticolo(int articolo) {
         this.articolo = articolo;
     }
 
@@ -25,7 +25,7 @@ public class GestioneArticoliModel {
         this.newPosizione = newPosizione;
     }
 
-    public String getArticolo() {
+    public int getArticolo() {
         return articolo;
     }
 

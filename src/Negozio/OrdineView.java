@@ -170,7 +170,8 @@ public class OrdineView extends JFrame  {
 
 		oc.aggiungi();
 		Object[] rigaO = new Object[6];
-		
+		//Object[] rigaO =oc.aggiungi();
+
 		//se ha prodotto un valore uguale a zero di prezzo non e' utile ai fini dell'ordine e quindi la riga non viene inserita
 		if (om.getPrezzo()==0.0) {
 			JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " non presente in magazzino");
@@ -242,12 +243,13 @@ public class OrdineView extends JFrame  {
 			int numeroarticoli = 0;
 						
 			try {
-				Integer.parseInt(textQ.getText());
+				numeroarticoli=Integer.parseInt(textQ.getText());
 			}
 			
 			catch (NumberFormatException nfe) {
 				JOptionPane.showMessageDialog(null, "Compilazione Campi Errata");
 	        }
+
 
 			aggiugi(textArt.getText(),numeroarticoli);
 			
