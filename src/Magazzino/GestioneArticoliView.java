@@ -104,18 +104,21 @@ public class GestioneArticoliView extends JFrame {
 			//cambio la posizione dell'articolo e poi metto sul textfield_2 la vecchia posizione
 
 			int art=0;
-
+			
 			try {
 				art = Integer.parseInt(textField.getText().toString());
+				gAM.setArticolo(art);
+				gAM.setNewPosizione(textField_2.getText());
+				cambioPos();
+				textField_1.setText(gAM.getOldPosizione());
+
+
 			}catch(NumberFormatException NFE){
 				JOptionPane.showMessageDialog(null, "Codice articolo non valido!");
 			}
 
 
-			gAM.setArticolo(art);
-			gAM.setNewPosizione(textField_2.getText());
-			cambioPos();
-			textField_1.setText(gAM.getOldPosizione());
+
 
 		}
 	}

@@ -341,7 +341,7 @@ public class DataSport {
 		ResultSet rs1 = null;
 	    String oldPosizione= new String();
 
-		try (PreparedStatement st = conn.prepareStatement("SELECT * \nFROM articoloregistrato\nWHERE codice=?;")) {
+		try (PreparedStatement st = conn.prepareStatement("SELECT * \nFROM articoloregistrato\nWHERE codice=? AND presenza = 'T';")) {
 			st.setInt(1, articolo);
 			rs1 = st.executeQuery();
 
