@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -559,4 +561,348 @@ public class DataSport {
 				}
 			}
 	}
+
+
+	// metodo richiamato dal controller di gestione uscita che serve a validare l'ordine inserito
+	public boolean validOrder(int ordine) {
+		boolean b = false;
+		ResultSet rs1 = null;
+		int counter = 0;
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT * FROM ordine WHERE codice_ordine=?")) {
+			st.setInt(1, ordine);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				counter++;
+			}
+
+			// se è maggiore uguale a zero l'ordine corrispondente esiste
+			if(counter<1) {
+				b = true;
+				JOptionPane.showMessageDialog(null, "Ordine non valido!");
+			}
+
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return b;
+	}
+
+
+	// metodo richiamato dal controller di gestione uscita che serve a validare l'ordine inserito controllando se ha già usccite a esso collegate
+
+	public boolean validForExit(int ordine) {
+
+
+		boolean b = false;
+		ResultSet rs1 = null;
+		int counter = 0;
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT * FROM uscita WHERE cod_ordine=?")) {
+			st.setInt(1, ordine);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				counter++;
+			}
+
+			// se è minore uguale a zero l'ordine corrispondente esiste
+			if(counter>0) {
+				b = true;
+				JOptionPane.showMessageDialog(null, "Ordine non valido!");
+			}
+
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return b;
+	}
+
+
+
+//metodo per
+	public Object[][] getArticoliOrdinati(int ordine) {
+
+		ResultSet rs1 = null;
+		int counter = 0;
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT nome_articolo\nFROM ordine\n WHERE codice_ordine=? \nGROUP BY nome_articolo;\n")) {
+			st.setInt(1, ordine);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				counter++;
+			}
+
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		ResultSet rs2 = null;
+		Object[][] articoli=new Object[counter][2];
+		try (PreparedStatement st1 = conn.prepareStatement("SELECT nome_articolo,numeropezzi\nFROM ordine\n WHERE codice_ordine=? \nGROUP BY nome_articolo,numeropezzi;\n")) {
+			st1.setInt(1, ordine);
+			rs2 = st1.executeQuery();
+
+			int i=0;
+			while (rs2.next()) {
+				articoli[i][0]= rs2.getString("nome_articolo");
+				articoli[i][1] = rs2.getInt("numeropezzi");
+				i++;
+			}
+
+			rs2.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return articoli;
+	}
+
+
+
+//metodo per controllare se l'ordine è evadibile
+	public boolean getEvadibilita(String s, int o) {
+		boolean b = true;
+
+
+		ResultSet rs1 = null;
+		int counter = 0;
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT COUNT(*) AS count FROM articoloregistrato WHERE nome=? AND presenza ='T'")) {
+
+
+			st.setString(1, s);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				counter=rs1.getInt("count");
+			}
+
+			// se è minore uguale a zero l'ordine corrispondente esiste
+			if(counter<o) {
+				b = false;
+				JOptionPane.showMessageDialog(null, "Uscita non evadibile!");
+			}
+
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return b;
+
+	}
+
+
+	public int newCodiceUscita() {
+
+		ResultSet rs1 = null;
+		int nuovo_codice=0;
+		try (PreparedStatement st = conn.prepareStatement("SELECT MAX(bolla) AS ultimo_codice\nFROM uscita;")) {
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				nuovo_codice  = rs1.getInt("ultimo_codice");
+			}
+			nuovo_codice++;
+			rs1.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nuovo_codice;
+
+	}
+
+
+	public String getNegozioByOrder(int ordine) {
+
+		ResultSet rs1 = null;
+
+		String Passw = null;
+
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT * FROM ordine\nWHERE codice_ordine=?")) {
+			st.setInt(1, ordine);
+			rs1 = st.executeQuery();
+
+			Passw = new String();
+
+			while (rs1.next()) {
+				Passw = rs1.getString("cod_negozio");
+			}
+
+
+			rs1.close();
+			//conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return Passw;
+
+	}
+
+
+
+//metodo chiamato gestione uscite controller
+	public int getCodiceArticolo(String articolo) {
+
+		ResultSet rs1 = null;
+
+		int codice=0;
+
+
+		try (PreparedStatement st = conn.prepareStatement("SELECT MIN(codice) FROM articoloregistrato WHERE nome=? AND presenza = 'T'")) {
+			st.setString(1, articolo);
+			rs1 = st.executeQuery();
+
+			while (rs1.next()) {
+				codice = rs1.getInt("codice");
+			}
+
+			rs1.close();
+			//conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return codice;
+
+	}
+
+
+
+//metodo per inserire una riga di uscita
+	public void insertUscita(int codiceBolla, String negozio, int codiceA, String spedizioniere, String data, int ordineDaEvadere) {
+
+
+		try (PreparedStatement st1 = conn.prepareStatement("INSERT INTO uscita(bolla,codice_neg,cod_articolo,spedizioniere,data_uscita,cod_ordine) VALUES(?,?,?,?,?,?)")) {
+
+			st1.setInt(1, codiceBolla);
+			st1.setString(2, negozio);
+			st1.setInt(3, codiceA);
+			st1.setString(1, spedizioniere);
+			st1.setString(2, data);
+			st1.setInt(3, ordineDaEvadere);
+
+			st1.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Uscita non registrata, controllare dati e riprovare");
+		}
+
+	}
+
+
+//metodo per mettere false al flag dell'articolo evaso
+	public void updateArticolo(int codiceA) {
+
+		try (PreparedStatement st2 = conn.prepareStatement("UPDATE articoloregistrato SET presenza='F'\nWHERE codice=?")) {
+			st2.setInt(1, codiceA);
+
+			st2.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+	public void aggiornaUscite(String annomese, int numeroPezzi) throws SQLException {
+
+		ResultSet rs1 = null;
+		int i = 0;
+		int pezziFinoAdOra=0;
+
+		// cerca se la combinazione anno e mese corrente e' gia' presente nel sistema
+		PreparedStatement st = conn.prepareStatement("SELECT * FROM storicomagazzino\nWHERE annomese = ?;");
+		st.setString(1, annomese);
+		rs1 = st.executeQuery();
+
+		while (rs1.next()) {
+			i++;
+			pezziFinoAdOra = rs1.getInt("ingressi");
+		}
+
+		rs1.close();
+
+		//se non è presente la variabile i sara' zero quindi inserisco la riga di questo mese
+		if (i < 1){
+			pezziFinoAdOra=numeroPezzi;
+
+			try (PreparedStatement st1 = conn.prepareStatement("INSERT INTO storicomagazzino(annomese,ingressi,uscite) VALUES(?,?,?)")) {
+
+				System.out.println( annomese+" "+pezziFinoAdOra);
+
+				st1.setString(1, annomese);
+				st1.setInt(2, 0);
+				st1.setInt(3, pezziFinoAdOra);
+
+				st1.execute();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null,"Ordine non inserito, controllare dati e riprovare");
+			}
+
+		}//altrimenti se la trova aggiorna le quantita'
+		else {
+			pezziFinoAdOra=pezziFinoAdOra+numeroPezzi;
+
+			try (PreparedStatement st2 = conn.prepareStatement("UPDATE storicomagazzino SET uscite=?\nWHERE annomese=?")) {
+				st2.setInt(1, pezziFinoAdOra);
+				st2.setString(2, annomese);
+
+				st2.execute();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	public List<Integer> findOrdini() {
+		ResultSet rs1 = null;
+		List <Integer> v = new ArrayList();
+		try (PreparedStatement st = conn.prepareStatement("SELECT codice_ordine FROM ordine GROUP BY codice_ordine ;")){
+			rs1 = st.executeQuery();
+
+			while(rs1.next()) {
+				v.add(rs1.getInt("codice_ordine"));				
+				}
+			
+		rs1.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		//System.out.println("DDDD"+v);
+		return v;
+	}
+
+
+
 }
+
+
+
+
+
+
+	//SELECT MIN(codice) FROM articoloregistrato WHERE nome='MASCHERA SCI ' AND presenza = 'T'
