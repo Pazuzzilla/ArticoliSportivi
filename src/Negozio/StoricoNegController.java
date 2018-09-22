@@ -19,7 +19,7 @@ public class StoricoNegController {
     //metodo con il quale passando al database il numero di ordini preparo la matrice di ordini e rispettive uscite da magazzino
     public int[][] visualizza(int howManyOrders, StoricoNegModel vmm) throws SQLException {
 
-        int[][]ordineUscita =new int[2][howManyOrders];
+        int[][]ordineUscita =new int[howManyOrders][2];
         String negozio=vmm.getneg();
 
         ordineUscita=DataSport.getInstance().getOrders(negozio,howManyOrders);

@@ -170,7 +170,7 @@ public class DataSport {
 	// metodo per richiedere i codici degli ordini associati a un negozio
 	public int[][] getOrders(String negozio, int howManyOrders) throws SQLException {
 		ResultSet rs = null;
-		int[][] ordineUscita = new int[2][howManyOrders];
+		int[][] ordineUscita = new int[howManyOrders][2];
 		int i = 0;
 		try (PreparedStatement st = conn.prepareStatement("SELECT codice_ordine\nFROM ordine\nWHERE cod_negozio=?\nGROUP BY codice_ordine")) {
 
@@ -178,7 +178,7 @@ public class DataSport {
 			rs = st.executeQuery();
 
 			while (rs.next()) {
-				ordineUscita[0][i] = rs.getInt("codice_ordine");
+				ordineUscita[i][0] = rs.getInt("codice_ordine");
 				i++;
 			}
 
@@ -198,11 +198,11 @@ public class DataSport {
 			try (PreparedStatement st = conn.prepareStatement("SELECT bolla\nFROM uscita\nWHERE cod_ordine=?\nGROUP BY bolla")) {
 
 				//System.out.println(ordineUscita[0][i]);
-				st.setInt(1, ordineUscita[0][i] );
+				st.setInt(1, ordineUscita[i][0] );
 				rs = st.executeQuery();
 
 				while (rs.next()) {
-					ordineUscita[1][i] = rs.getInt("bolla");
+					ordineUscita[i][1] = rs.getInt("bolla");
 				}
 			}
 		}
@@ -218,7 +218,7 @@ public class DataSport {
 		ResultSet rs = null;
 		ResultSet rs1 = null;
 
-		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM Ordine\nWHERE cod_negozio=?")) {
+		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM ordine\nWHERE cod_negozio=?")) {
 			st.setString(1,negID );
 			rs = st.executeQuery();
 
@@ -231,7 +231,7 @@ public class DataSport {
 			e.printStackTrace();
 		}
 
-		Object[][] o = new Object[6][i];
+		Object[][] o = new Object[i][6];
 
 		try (PreparedStatement st = conn.prepareStatement("SELECT *\nFROM ordine\nWHERE cod_negozio=?")) {
 			st.setString(1,negID );
@@ -239,12 +239,12 @@ public class DataSport {
 
 			for(int j = 0; j < i; j++) {
 				rs1.next();
-				o[0][j] = rs1.getInt("codice_ordine");
-				o[1][j] = rs1.getString("cod_negozio");
-				o[2][j] = rs1.getString("nome_articolo");
-				o[3][j] = rs1.getInt("numeropezzi");
-				o[4][j]	= rs1.getDate("data_ordine");
-				o[5][j] = rs1.getFloat("prezzo_tot");
+				o[j][0] = rs1.getInt("codice_ordine");
+				o[j][1] = rs1.getString("cod_negozio");
+				o[j][2] = rs1.getString("nome_articolo");
+				o[j][3] = rs1.getInt("numeropezzi");
+				o[j][4]	= rs1.getDate("data_ordine");
+				o[j][5] = rs1.getFloat("prezzo_tot");
 			}
 			rs1.close();
 		} catch (SQLException e) {

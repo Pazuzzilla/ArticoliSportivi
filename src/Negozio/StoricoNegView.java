@@ -78,16 +78,16 @@ public class StoricoNegView extends JFrame {
 		
 
 		//setto la nuova tabella che avra' solo le righe necessarie
-		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Negozio", "Codice Ordine", "Articolo", "Numero Pezzi", "Data","Prezzo totale"}));
+		table.setModel(new DefaultTableModel(new Object[i][6], new String[]{"Codice Ordine","Codice Negozio", "Articolo", "Numero Pezzi", "Data","Prezzo totale"}));
 
 		for (j=0;j<i-1;j++){
 
-			table.setValueAt(o[0][j],j,0);
-			table.setValueAt(o[1][j],j,1);
-			table.setValueAt(o[2][j],j,2);
-			table.setValueAt(o[3][j],j,3);
-			table.setValueAt(o[4][j],j,4);
-			table.setValueAt(o[5][j],j,5);
+			table.setValueAt(o[j][0],j,0);
+			table.setValueAt(o[j][1],j,1);
+			table.setValueAt(o[j][2],j,2);
+			table.setValueAt(o[j][3],j,3);
+			table.setValueAt(o[j][4],j,4);
+			table.setValueAt(o[j][5],j,5);
 
 		}
 	}
