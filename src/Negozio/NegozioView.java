@@ -29,6 +29,7 @@ public class NegozioView extends JFrame {
 	 * Create the frame.
 	 */
 	public NegozioView(NegozioController sc, NegozioModel sm) {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 416, 290);
 		contentPane = new JPanel();
@@ -44,7 +45,7 @@ public class NegozioView extends JFrame {
 		btnStorico.setAction(action);
 		
 		JButton btnOrdine = new JButton("Ordine");
-		btnOrdine.setBounds(215, 5, 197, 253);
+		btnOrdine.setBounds(213, 5, 197, 253);
 		btnOrdine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}

@@ -23,6 +23,8 @@ public class GestioneArticoliView extends JFrame {
 	 * Create the frame.
 	 */
 	public GestioneArticoliView(GestioneArticoliController gac, GestioneArticoliModel gam) {
+		setTitle("Gestione Articoli");
+		setResizable(false);
 
 		gAC=gac;
 		gAM=gam;
@@ -104,7 +106,7 @@ public class GestioneArticoliView extends JFrame {
 			//cambio la posizione dell'articolo e poi metto sul textfield_2 la vecchia posizione
 
 			int art=0;
-			
+
 			try {
 				art = Integer.parseInt(textField.getText().toString());
 				gAM.setArticolo(art);

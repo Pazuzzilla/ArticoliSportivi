@@ -19,7 +19,6 @@ public class SegreteriaView extends JFrame {
 
 	private JPanel contentPane;
 	private SegreteriaController SegreteriaController;
-	private SegreteriaModel SegreteriaModel;
 	private final Apripannello action = new Apripannello();
 	private final Action action_1 = new SwingAction();
 
@@ -27,7 +26,8 @@ public class SegreteriaView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SegreteriaView(SegreteriaController sc, SegreteriaModel sm) {
+	public SegreteriaView(SegreteriaController sc) {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -35,7 +35,6 @@ public class SegreteriaView extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		SegreteriaController=sc;
-		SegreteriaModel=sm;
 		
 		JButton btnInserireNuovoArticolo = new JButton("Inserire nuovo articolo");
 		/*btnInserireNuovoArticolo.addActionListener(new ActionListener() {

@@ -19,16 +19,15 @@ public class MagazzinoView extends JFrame {
 	private final Action action_1 = new SwingAction();
 	private final Action action_2 = new SwingAction_1();
 	private MagazzinoController mC;
-	private MagazzinoModel mM;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public MagazzinoView(MagazzinoController mc, MagazzinoModel mm) {
+	public MagazzinoView(MagazzinoController mc) {
+		setResizable(false);
 
 		mC = mc;
-		mM = mm;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 194);
 		contentPane = new JPanel();

@@ -11,11 +11,11 @@ import Negozio.NegozioModel;
 import Negozio.NegozioView;
 
 import Magazzino.MagazzinoController;
-import Magazzino.MagazzinoModel;
+
 import Magazzino.MagazzinoView;
 
 import Segreteria.SegreteriaController;
-import Segreteria.SegreteriaModel;
+
 import Segreteria.SegreteriaView;
 import data.DataSport;
 import data.Negozio;
@@ -66,11 +66,11 @@ public class LoginController {
 					JOptionPane.showMessageDialog(null,"Utente di Magazzino");
 
 					//Model SEGRETERIA
-					MagazzinoModel mm=new MagazzinoModel();
+					//MagazzinoModel mm=new MagazzinoModel();
 					//Controller SEGRETERIA
-					MagazzinoController mc= new MagazzinoController(mm);
+					MagazzinoController mc= new MagazzinoController();
 					//View SEGRETERIA
-					MagazzinoView mv =new MagazzinoView(mc,mm);
+					MagazzinoView mv =new MagazzinoView(mc);
 
 					//run SEGRETERIA
 					mv.run();
@@ -80,11 +80,11 @@ public class LoginController {
 					JOptionPane.showMessageDialog(null,"Utente di Segreteria");
 					
 					//Model SEGRETERIA
-					SegreteriaModel sm=new SegreteriaModel();	
+					//SegreteriaModel sm=new SegreteriaModel();
 					//Controller SEGRETERIA
-					SegreteriaController sc= new SegreteriaController(sm);
+					SegreteriaController sc= new SegreteriaController();
 					//View SEGRETERIA
-					SegreteriaView sv =new SegreteriaView(sc,sm);
+					SegreteriaView sv =new SegreteriaView(sc);
 					
 					//run SEGRETERIA
 					sv.run();

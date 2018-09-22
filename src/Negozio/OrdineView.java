@@ -31,6 +31,8 @@ public class OrdineView extends JFrame  {
 	 * Create the frame.
 	 */
 	public OrdineView(OrdineModel om, OrdineController oc) {
+		setResizable(false);
+		setTitle("Nuovo Ordine");
 		oC = oc;
 		oM = om;
 		numriga = 0;

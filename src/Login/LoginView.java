@@ -24,6 +24,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPasswordField;
+import java.awt.Toolkit;
 
 public class LoginView extends JFrame{
 
@@ -38,6 +39,7 @@ public class LoginView extends JFrame{
 	 * Create the frame.
 	 */
 	public LoginView (LoginController m,LoginObservedModel om) {
+		setResizable(false);
 		setTitle("Articoli Sportivi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 150);

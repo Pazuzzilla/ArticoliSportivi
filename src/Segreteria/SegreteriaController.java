@@ -5,11 +5,10 @@ import data.Negozio;
 import data.Negozio;
 
 public class SegreteriaController {
+
 	
-	private SegreteriaModel TheModel;
-	
-	public SegreteriaController(SegreteriaModel sm1){
-		TheModel=sm1;
+	public SegreteriaController(){
+
 		}
 	
 	public void Openna() {

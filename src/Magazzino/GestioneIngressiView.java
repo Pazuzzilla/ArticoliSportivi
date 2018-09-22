@@ -38,6 +38,8 @@ public class GestioneIngressiView extends JFrame {
 	 * Create the frame.
 	 */
 	public GestioneIngressiView(GestioneIngressiController gac , GestioneIngressiModel gim) {
+		setResizable(false);
+		setTitle("Gestione Ingressi");
 		this.gIC = gac;
 		this.gIM = gim;
 
@@ -194,9 +196,11 @@ public class GestioneIngressiView extends JFrame {
 		}
 	}
 	// metodo per verificare se la data inserita come data di produzione e' valida
-	public static boolean isDateValid (int day, int month, int year) {
+	public static boolean isDateValid(int day, int month, int year) {
 		GregorianCalendar cal = new GregorianCalendar(year, month - 1, day);
 		cal.setLenient(false);
+
+
 
 		try {
 			cal.get(Calendar.DATE);
@@ -204,6 +208,8 @@ public class GestioneIngressiView extends JFrame {
 		} catch (IllegalArgumentException e) {
 			return false;
 		}
+
+
 	}
 
 
@@ -322,6 +328,7 @@ public class GestioneIngressiView extends JFrame {
 
 			boolean b  = false;
 			boolean b1 = false;
+			boolean b2 = false;
 
 			// prima di iniziare l'inserimento viene verificato che i campi che voglio come integer siano di quel tipo
 			// e subito dopo se la data di produzione e' valida come tipo di dato Date
@@ -345,8 +352,29 @@ public class GestioneIngressiView extends JFrame {
 				b = isDateValid(Integer.parseInt(day.getText()), Integer.parseInt(month.getText()), Integer.parseInt(year.getText()));
 			}
 
+			if (b == true){
+
+
+				int yearOS = Integer.parseInt(gIM.getDataOS().substring(0,4));
+				int monthOS = Integer.parseInt(gIM.getDataOS().substring(5,7));
+				int dayOS = Integer.parseInt(gIM.getDataOS().substring(8,10));
+
+				if(yearOS<Integer.parseInt(year.getText().toString())){
+					b2 = false;
+				}
+
+				if (yearOS==Integer.parseInt(year.getText().toString()) && monthOS<Integer.parseInt(month.getText().toString())){
+					b2 = false;
+				}
+
+				if (yearOS==Integer.parseInt(year.getText().toString()) && monthOS==Integer.parseInt(month.getText().toString()) && dayOS<Integer.parseInt(day.getText().toString())){
+					b2 = false;
+				}
+			}
+
 			//continuo con l'inserimento
-			if(b == true){
+			if(b2 == true){
+
 				String dataProd= year.getText()+"-"+month.getText()+"-"+day.getText();
 				gIM.setDataIngresso(dataProd);
 

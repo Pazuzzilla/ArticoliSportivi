@@ -29,6 +29,8 @@ public class StoricoNegView extends JFrame {
 	 * Create the frame.
 	 */
 	public StoricoNegView(Object[][] o) {
+		setResizable(false);
+		setTitle("Storico Negozio");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 908, 455);
 		contentPane = new JPanel();

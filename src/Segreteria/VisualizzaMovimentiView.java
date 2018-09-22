@@ -34,6 +34,8 @@ public class VisualizzaMovimentiView extends JFrame {
 	 * Create the frame.
 	 */
 	public VisualizzaMovimentiView(VisualizzaMovimentiController vmc, VisualizzaMovimentiModel vmm) {
+		setTitle("Visualizza Movimenti");
+		setResizable(false);
 		vMC = vmc;
 		vMM = vmm;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

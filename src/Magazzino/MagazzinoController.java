@@ -8,10 +8,8 @@ import lib.GestioneIngressi;
 
 public class MagazzinoController {
 	
-	private MagazzinoModel TheModel;
-	
-	public MagazzinoController(MagazzinoModel sm1){
-		TheModel=sm1;
+	public MagazzinoController(){
+
 		}
 	
 	public void openGI() {

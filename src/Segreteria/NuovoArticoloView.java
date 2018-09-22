@@ -37,6 +37,8 @@ public class NuovoArticoloView extends JFrame {
 	 * Create the frame.
 	 */
 	public NuovoArticoloView(NuovoArticoloController nac , NuovoArticoloObserved nao) {
+		setTitle("Inserimento nuovo articolo");
+		setResizable(false);
 		
 		NAO=nao;
 		NAC=nac;
@@ -49,22 +51,22 @@ public class NuovoArticoloView extends JFrame {
 		SpringLayout sl_contentPane = new SpringLayout();
 		contentPane.setLayout(sl_contentPane);
 		
-		JLabel lblInserireInformazioniRiguardanti = new JLabel("Inserire informazioni riguardanti il nuovo articolo da inserire");
-		lblInserireInformazioniRiguardanti.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-		sl_contentPane.putConstraint(SpringLayout.NORTH, lblInserireInformazioniRiguardanti, 5, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, lblInserireInformazioniRiguardanti, 5, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, lblInserireInformazioniRiguardanti, 445, SpringLayout.WEST, contentPane);
+		JLabel lblInserireInformazioniRiguardanti = new JLabel("Immettere informazioni riguardanti il nuovo articolo da inserire");
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblInserireInformazioniRiguardanti, 10, SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, lblInserireInformazioniRiguardanti, 463, SpringLayout.WEST, contentPane);
+		lblInserireInformazioniRiguardanti.setFont(new Font("Al Nile", Font.PLAIN, 13));
 		contentPane.add(lblInserireInformazioniRiguardanti);
 		
 		JLabel lblNomeArticolo = new JLabel("Nome Articolo:");
-		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNomeArticolo, 25, SpringLayout.SOUTH, lblInserireInformazioniRiguardanti);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNomeArticolo, 20, SpringLayout.SOUTH, lblInserireInformazioniRiguardanti);
+		sl_contentPane.putConstraint(SpringLayout.WEST, lblInserireInformazioniRiguardanti, 0, SpringLayout.WEST, lblNomeArticolo);
 		sl_contentPane.putConstraint(SpringLayout.WEST, lblNomeArticolo, 23, SpringLayout.WEST, contentPane);
 		contentPane.add(lblNomeArticolo);
 		
 		textField = new JTextField();
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField, -5, SpringLayout.NORTH, lblNomeArticolo);
 		sl_contentPane.putConstraint(SpringLayout.WEST, textField, 6, SpringLayout.EAST, lblNomeArticolo);
-		sl_contentPane.putConstraint(SpringLayout.EAST, textField, -5, SpringLayout.EAST, lblInserireInformazioniRiguardanti);
+		sl_contentPane.putConstraint(SpringLayout.EAST, textField, -158, SpringLayout.EAST, contentPane);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -98,19 +100,19 @@ public class NuovoArticoloView extends JFrame {
 		
 		JButton btnNewButton = new JButton("Verifica Esistenza");
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnNewButton, -5, SpringLayout.NORTH, lblNomeArticolo);
+		sl_contentPane.putConstraint(SpringLayout.EAST, btnNewButton, -34, SpringLayout.EAST, contentPane);
 		btnNewButton.setAction(action);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("New button");
-		sl_contentPane.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, btnNewButton_1);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNewButton_1, -10, SpringLayout.SOUTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, btnNewButton_1, -34, SpringLayout.EAST, contentPane);
 		btnNewButton_1.setAction(action_1);
 		contentPane.add(btnNewButton_1);
 		
 		textField_3 = new JTextField();
-		sl_contentPane.putConstraint(SpringLayout.EAST, btnNewButton_1, 0, SpringLayout.EAST, textField_3);
+		sl_contentPane.putConstraint(SpringLayout.WEST, textField_3, 124, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, textField_3, -5, SpringLayout.NORTH, lblNewLabel);
-		sl_contentPane.putConstraint(SpringLayout.WEST, textField_3, 0, SpringLayout.WEST, textField);
 		sl_contentPane.putConstraint(SpringLayout.EAST, textField_3, 465, SpringLayout.EAST, lblNewLabel);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
