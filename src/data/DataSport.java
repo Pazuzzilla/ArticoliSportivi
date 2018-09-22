@@ -780,7 +780,7 @@ public class DataSport {
 		int codice=0;
 
 
-		try (PreparedStatement st = conn.prepareStatement("SELECT MIN(codice) FROM articoloregistrato WHERE nome=? AND presenza = 'T'")) {
+		try (PreparedStatement st = conn.prepareStatement("SELECT MIN(codice) AS codice FROM articoloregistrato WHERE nome=? AND presenza = 'T'")) {
 			st.setString(1, articolo);
 			rs1 = st.executeQuery();
 
