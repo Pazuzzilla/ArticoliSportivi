@@ -809,9 +809,9 @@ public class DataSport {
 			st1.setInt(1, codiceBolla);
 			st1.setString(2, negozio);
 			st1.setInt(3, codiceA);
-			st1.setString(1, spedizioniere);
-			st1.setString(2, data);
-			st1.setInt(3, ordineDaEvadere);
+			st1.setString(4, spedizioniere);
+			st1.setString(5, data);
+			st1.setInt(6, ordineDaEvadere);
 
 			st1.execute();
 

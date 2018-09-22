@@ -203,6 +203,7 @@ public class GestioneUsciteView extends JFrame {
 		//"Codice Uscita", "Codice Negozio", "Articolo", "Numero Pezzi", "Data", "spedizioniere"
 		//gUM.setCodiceBolla(codiceO);
 		gUM.setSpedizioniere(textField.getText());
+		gUM.setOrdineDaEvadere(codiceO);
 
 		gUC.getNegozio(codiceO);
 		gUC.newCodiceUscita();
@@ -322,6 +323,7 @@ public class GestioneUsciteView extends JFrame {
 			btnSpedisci.setEnabled(false);
 
 			spedisci();
+			updateT();
 
 		}
 	}
