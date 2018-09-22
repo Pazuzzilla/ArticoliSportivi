@@ -132,10 +132,10 @@ public class VisualizzaMovimentiView extends JFrame {
 
 		for (j=0;j<i;j++){
 
-			table.setValueAt(ordineUscita[0][j],j,0);
-			table.setValueAt(ordineUscita[1][j],j,1);
+			table.setValueAt(ordineUscita[j][0],j,0);
+			table.setValueAt(ordineUscita[j][1],j,1);
 
-			if (ordineUscita[1][j]==0){
+			if (ordineUscita[j][1]==0){
 				table.setValueAt("Non Evaso",j,1);
 			}
 		}

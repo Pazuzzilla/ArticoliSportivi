@@ -206,8 +206,12 @@ public class DataSport {
 				}
 			}
 		}
+			try {
+			rs.close();
+			}catch(NullPointerException E1){
 
-		rs.close();
+			}
+
 		return ordineUscita;
 	}
 
