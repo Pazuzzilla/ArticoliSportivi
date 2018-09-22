@@ -4,6 +4,8 @@ import data.DataSport;
 
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 public class VisualizzaMovimentiController {
 
     private VisualizzaMovimentiModel theModel;
@@ -21,10 +23,14 @@ public class VisualizzaMovimentiController {
 
         int[][]ordineUscita =new int[2][howManyOrders];
         String negozio=vmm.getneg();
-
+        
+        if (negozio.isEmpty()) {
+        	JOptionPane.showMessageDialog(null,"Negozio Non Inserito ");
+        }
+        else {
         ordineUscita=DataSport.getInstance().getOrders(negozio,howManyOrders);
         ordineUscita=DataSport.getInstance().getExit(howManyOrders,ordineUscita);
-
+        }
         return ordineUscita;
 
     }

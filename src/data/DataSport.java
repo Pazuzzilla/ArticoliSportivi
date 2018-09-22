@@ -32,7 +32,7 @@ public class DataSport {
 			e1.printStackTrace();
 		}
 		try {
-			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Articoli sportivi", "postgres", "utente0");
+			conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Articoli Sportivi", "postgres", "utente0");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -877,26 +877,45 @@ public class DataSport {
 
 	}
 
-	public List<Integer> findOrdini() {
+	public Object[][] findOrdini(){
 		ResultSet rs1 = null;
-		List <Integer> v = new ArrayList();
-		try (PreparedStatement st = conn.prepareStatement("SELECT codice_ordine FROM ordine GROUP BY codice_ordine ;")){
+		int c = 0;
+		
+		//trovo codice ordine e nome negozio degli ordini non evasi
+		String sql = "SELECT DISTINCT ordine.codice_ordine, ordine.cod_negozio "
+				+ "FROM ordine, (SELECT DISTINCT codice_ordine FROM ordine EXCEPT SELECT DISTINCT cod_ordine FROM uscita) "
+				+ "AS ordini_non_evasi WHERE ordine.codice_ordine = ordini_non_evasi.codice_ordine;";
+		
+		try (PreparedStatement st = conn.prepareStatement(sql)){
 			rs1 = st.executeQuery();
 
 			while(rs1.next()) {
-				v.add(rs1.getInt("codice_ordine"));				
+				c++;		
 				}
 			
 		rs1.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		//System.out.println("DDDD"+v);
-		return v;
+		
+		Object [][] o = new Object[c][2];
+		int j = 0;
+		
+		try (PreparedStatement st = conn.prepareStatement(sql)){
+			rs1 = st.executeQuery();
+			
+			while(rs1.next()) {
+				o[j][0] = rs1.getInt("codice_ordine");
+				o[j][1] = rs1.getString("cod_negozio");
+				j++;
+			}
+			rs1.close();
+		} catch (SQLException e) {
+		e.printStackTrace();
+		}
+		
+		return o;
 	}
-
-
 
 }
 

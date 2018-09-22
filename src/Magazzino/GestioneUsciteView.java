@@ -172,6 +172,7 @@ public class GestioneUsciteView extends JFrame {
 	public void run() {
 		try {
 			setVisible(true);
+			 updateT();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -336,27 +337,22 @@ public class GestioneUsciteView extends JFrame {
 			btnVisualizza.setEnabled(true);
 			textField_1.setText("");
 			textField.setText("");
+			 updateT();
 		}
 	}
 
-
-/*
 	public void updateT() {
 		int j;
 		int i = 0;
-		List <Integer> l = new ArrayList();
-		l = gum.getOrdini();
+		
+		Object[][] o = gUC.getOrdini();
+		i = o.length;
+			
 		table.setModel(new DefaultTableModel(new Object[i][2], new String[]{"Ordine", "Codice Negozio"}));
 		
-		int[][]ordineUscita;
-
 		for (j=0;j<i;j++){
-
-			table.setValueAt(l[j][0],j,0);
-			table.setValueAt(l[j][1],j,1);
-			table.set
+			table.setValueAt(o[j][0],j,0);
+			table.setValueAt(o[j][1],j,1);
 		}
 	}
-	
-	*/
 }

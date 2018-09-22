@@ -38,11 +38,6 @@ public class GestioneUsciteModel {
 	}
 
 	
-	public List<Integer> getOrdini() {
-		List <Integer> v = DataSport.getInstance().findOrdini();
-		return v;
-	}
-
 	public void setArticolo(String articolo) {
 		Articolo = articolo;
 	}

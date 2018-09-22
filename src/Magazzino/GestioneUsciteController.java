@@ -1,5 +1,7 @@
 package Magazzino;
 
+import java.sql.SQLException;
+
 import data.DataSport;
 
 public class GestioneUsciteController {
@@ -7,9 +9,14 @@ public class GestioneUsciteController {
 	public GestioneUsciteController(GestioneUsciteModel gum) {
 		//gum.setOrdini();
 		gUM = gum;
-		System.out.println(gum.getOrdini());
+		//System.out.println(gum.getOrdini());
 	}
 
+	public Object[][] getOrdini() {
+		Object[][] o = DataSport.getInstance().findOrdini();
+		return o;
+	}
+	
 	public boolean validOrder(int ordine) {
 		boolean b = false;
 
@@ -57,7 +64,12 @@ public class GestioneUsciteController {
 		String data = gUM.getData();
 		String annomese = data.substring(0,7);
 
-		DataSport.getInstance().aggiornaUscite(annomese,pezziPerArticolo);
+		try {
+			DataSport.getInstance().aggiornaUscite(annomese,pezziPerArticolo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		for (int j = 0 ;j<pezziPerArticolo ; j++){
 

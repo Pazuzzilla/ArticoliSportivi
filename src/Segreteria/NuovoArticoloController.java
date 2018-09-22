@@ -41,14 +41,22 @@ public class NuovoArticoloController {
 
 		try {
 			float f = Float.parseFloat(prezzo);
+			
+			if (nome.isEmpty() || materiale.isEmpty() || descrizione.isEmpty() || prezzo.isEmpty()) {
+				
+				JOptionPane.showMessageDialog(null,"Errore Compilazione Campi");
+			}
+			else {
 			DataSport.getInstance().insertarticletipe(nome,sport,materiale,descrizione,f);
+			JOptionPane.showMessageDialog(null,"Articolo inserito ");
+			}
+			
 		} catch(NumberFormatException e ){
 
-			JOptionPane.showMessageDialog(null,"errore inserimento prezzo ");
+			JOptionPane.showMessageDialog(null,"Errore Inserimento Prezzo ");
 		}
 
-			JOptionPane.showMessageDialog(null,"Articolo inserito ");
-
+			//JOptionPane.showMessageDialog(null,"Articolo inserito "); posizione iniziale
 	}
 	
 }

@@ -170,7 +170,7 @@ public class OrdineView extends JFrame  {
 
 		oc.aggiungi();
 		Object[] rigaO = new Object[6];
-
+		
 		//se ha prodotto un valore uguale a zero di prezzo non e' utile ai fini dell'ordine e quindi la riga non viene inserita
 		if (om.getPrezzo()==0.0) {
 			JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " non presente in magazzino");
@@ -238,9 +238,19 @@ public class OrdineView extends JFrame  {
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
+			
+			int numeroarticoli = 0;
+						
+			try {
+				Integer.parseInt(textQ.getText());
+			}
+			
+			catch (NumberFormatException nfe) {
+				JOptionPane.showMessageDialog(null, "Compilazione Campi Errata");
+	        }
 
-			aggiugi(textArt.getText(),Integer.parseInt(textQ.getText()));
-
+			aggiugi(textArt.getText(),numeroarticoli);
+			
 			Object o = oM.getPrezzo_complessivo();// devo mettere sul prezzo complessivo il prezzo complessivo del modello
 			String s = o.toString();
 			textField.setText(s);
@@ -264,12 +274,12 @@ public class OrdineView extends JFrame  {
 
 			JButton b = (JButton) e.getSource();
 			b.setEnabled(false);
-
-
+			
+			
 			//per inserire passo al modello di volta in volta un articolo diverso
 			//e lo faccio insertire dal controller
 			//tramite una chiamaata a database
-
+			
 			for (int j = 0; j< numriga; j++){
 
 				oM.setArticolo(table.getValueAt(j,3).toString());
@@ -279,8 +289,14 @@ public class OrdineView extends JFrame  {
 				insert();
 
 			}
-			JOptionPane.showMessageDialog(null, "ordine inserito ");
-
+			if(oM.getArticolo() == null || oM.getPrezzo() <= 0 || oM.getNumeroPezzi() <= 0) {
+				JOptionPane.showMessageDialog(null, "Errore Nella Compilazione Dei Campi! ");
+				b.setEnabled(true);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "ordine inserito ");
+				b.setEnabled(true);
+			}
 		}
 	}
 

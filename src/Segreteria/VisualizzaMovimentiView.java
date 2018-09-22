@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SpringLayout;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -135,7 +136,7 @@ public class VisualizzaMovimentiView extends JFrame {
 			table.setValueAt(ordineUscita[1][j],j,1);
 
 			if (ordineUscita[1][j]==0){
-				table.setValueAt("non evaso",j,1);
+				table.setValueAt("Non Evaso",j,1);
 			}
 		}
 	}
