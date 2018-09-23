@@ -181,7 +181,7 @@ public class OrdineView extends JFrame  {
 
 		//se ha prodotto un valore uguale a zero di prezzo non e' utile ai fini dell'ordine e quindi la riga non viene inserita
 		if (om.getPrezzo()==0.0) {
-			JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " non presente in magazzino");
+
 
 			//System.out.println(rigaO[3] + " " + rigaO[5]);
 			//System.out.println(rigaO[0] + " " + rigaO[1] + " " + rigaO[2] + " " + rigaO[3] + " " + rigaO[4] + " " + rigaO[5]);

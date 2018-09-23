@@ -31,6 +31,7 @@ public class GestioneIngressiView extends JFrame {
 	private final Action action_2 = new SwingAction();
 	private JButton btnAggiungiAIngresso;
 	private int numeropezzi;
+	private JButton  btnInserisci;
 	
 
 
@@ -167,7 +168,7 @@ public class GestioneIngressiView extends JFrame {
 		));
 		scrollPane.setViewportView(table);
 		
-		JButton  btnInserisci = new JButton("Inserisci");
+		btnInserisci = new JButton("Inserisci");
 		btnInserisci.setAction(action_1);
 		btnInserisci.setBounds(753, 449, 143, 43);
 		contentPane.add(btnInserisci);
@@ -186,6 +187,8 @@ public class GestioneIngressiView extends JFrame {
 		btnElimina.setAction(action_2);
 		btnElimina.setBounds(624, 449, 117, 29);
 		contentPane.add(btnElimina);
+
+		btnInserisci.setEnabled(false);
 	}
 
 	public void run() {
@@ -324,11 +327,11 @@ public class GestioneIngressiView extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 
-			btnAggiungiAIngresso.setEnabled(false);
+			//btnAggiungiAIngresso.setEnabled(false);
 
 			boolean b  = false;
 			boolean b1 = false;
-			boolean b2 = false;
+			boolean b2 = true;
 
 			// prima di iniziare l'inserimento viene verificato che i campi che voglio come integer siano di quel tipo
 			// e subito dopo se la data di produzione e' valida come tipo di dato Date
@@ -359,6 +362,8 @@ public class GestioneIngressiView extends JFrame {
 				int monthOS = Integer.parseInt(gIM.getDataOS().substring(5,7));
 				int dayOS = Integer.parseInt(gIM.getDataOS().substring(8,10));
 
+				System.out.println(yearOS+ " "+monthOS+ " "+dayOS);
+
 				if(yearOS<Integer.parseInt(year.getText().toString())){
 					b2 = false;
 				}
@@ -371,7 +376,9 @@ public class GestioneIngressiView extends JFrame {
 					b2 = false;
 				}
 			}
-
+			System.out.println(b);
+			System.out.println(b1);
+			System.out.println(b2);
 			//continuo con l'inserimento
 			if(b2 == true){
 
@@ -379,6 +386,7 @@ public class GestioneIngressiView extends JFrame {
 				gIM.setDataIngresso(dataProd);
 
 				aggiugi(textField.getText(),Integer.parseInt(textField_1.getText()));
+				btnInserisci.setEnabled(true);
 			}
 			else{
 				JOptionPane.showMessageDialog(null, "Informazioni inserite non valide!");

@@ -167,6 +167,7 @@ public class DataSport {
 
 	}
 
+
 	// metodo per richiedere i codici degli ordini associati a un negozio
 	public int[][] getOrders(String negozio, int howManyOrders) throws SQLException {
 		ResultSet rs = null;
@@ -189,6 +190,7 @@ public class DataSport {
 		}
 
 	}
+
 
 	//metodo per passare le uscite e associarle agli ordini
 	public int[][] getExit(int howMany, int[][] ordineUscita) throws SQLException {
@@ -283,6 +285,7 @@ public class DataSport {
 			}
 
 			if(j<1){
+				JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " non presente in magazzino");
 				b=false;
 			}
 
@@ -350,7 +353,7 @@ public class DataSport {
 			}
 
 			if (oldPosizione.isEmpty()){
-				JOptionPane.showMessageDialog(null,"codice non trovato");
+				//JOptionPane.showMessageDialog(null,"codice non trovato");
 			}
 
 			rs1.close();

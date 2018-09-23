@@ -107,18 +107,24 @@ public class GestioneArticoliView extends JFrame {
 
 			int art=0;
 
-			try {
-				art = Integer.parseInt(textField.getText().toString());
-				gAM.setArticolo(art);
-				gAM.setNewPosizione(textField_2.getText());
-				cambioPos();
-				textField_1.setText(gAM.getOldPosizione());
 
-
-			}catch(NumberFormatException NFE){
-				JOptionPane.showMessageDialog(null, "Codice articolo non valido!");
+			if(textField_2.getText().isEmpty()){
+				JOptionPane.showMessageDialog(null, "Inserire una nuova posizione");
 			}
+			else {
 
+				try {
+					art = Integer.parseInt(textField.getText().toString());
+					gAM.setArticolo(art);
+					gAM.setNewPosizione(textField_2.getText());
+					cambioPos();
+					textField_1.setText(gAM.getOldPosizione());
+
+
+				} catch (NumberFormatException NFE) {
+					JOptionPane.showMessageDialog(null, "Codice articolo non valido!");
+				}
+			}
 
 
 

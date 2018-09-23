@@ -327,6 +327,7 @@ public class GestioneUsciteView extends JFrame {
 			btnSpedisci.setEnabled(false);
 
 			spedisci();
+			reset();
 			updateT();
 
 		}
@@ -336,13 +337,11 @@ public class GestioneUsciteView extends JFrame {
 
 	private class SwingAction_1 extends AbstractAction {
 		public SwingAction_1() {
-			putValue(NAME, "Elimina");
+			putValue(NAME, "reset");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
-			btnVisualizza.setEnabled(true);
-			textField_1.setText("");
-			textField.setText("");
+			 reset();
 			 updateT();
 		}
 	}
@@ -360,5 +359,46 @@ public class GestioneUsciteView extends JFrame {
 			table.setValueAt(o[j][0],j,0);
 			table.setValueAt(o[j][1],j,1);
 		}
+	}
+
+	public void reset(){
+
+
+		btnVisualizza.setEnabled(true);
+		textField_1.setText("");
+		textField.setText("");
+
+		table_1.setModel(new DefaultTableModel(
+				new Object[][] {
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+						{null, null, null, null, null, null},
+				},
+				new String[] {
+						"Codice Uscita", "Codice Negozio", "Articolo", "Numero Pezzi", "Data", "spedizioniere"
+				}
+		));
 	}
 }
