@@ -50,7 +50,7 @@ public class LoginController {
 					negozio.setNegozioid(DataSport.getInstance().getNegozio(ID));
 					JOptionPane.showMessageDialog(null,"Utente di Negozio di: "+negozio.getNegozioid());
 
-					//b=true;
+					b=true;
 					//Model NEGOZIO
 					NegozioModel nm = new NegozioModel(negozio);
 					//Controller NEGOZIO
@@ -65,6 +65,7 @@ public class LoginController {
 				case "MAG": 
 					JOptionPane.showMessageDialog(null,"Utente di Magazzino");
 
+					b=true;
 					//Model SEGRETERIA
 					//MagazzinoModel mm=new MagazzinoModel();
 					//Controller SEGRETERIA
@@ -78,7 +79,8 @@ public class LoginController {
 					break;
 				case "SEG":	
 					JOptionPane.showMessageDialog(null,"Utente di Segreteria");
-					
+
+					b=true;
 					//Model SEGRETERIA
 					//SegreteriaModel sm=new SegreteriaModel();
 					//Controller SEGRETERIA

@@ -39,12 +39,12 @@ public class NegozioView extends JFrame {
 		NegozioModel=sm;
 		contentPane.setLayout(null);
 		
-		JButton btnStorico = new JButton("Storico");
+		JButton btnStorico = new JButton("Nuovo Ordine");
 		btnStorico.setBounds(6, 5, 197, 253);
 		contentPane.add(btnStorico);
 		btnStorico.setAction(action);
 		
-		JButton btnOrdine = new JButton("Ordine");
+		JButton btnOrdine = new JButton("Storico");
 		btnOrdine.setBounds(213, 5, 197, 253);
 		btnOrdine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -80,7 +80,7 @@ public class NegozioView extends JFrame {
 	//Azione per far Partire l'inerfaccia di nuovoarticolo
 	private class VisOrd extends AbstractAction {
 		public VisOrd() {
-			putValue(NAME, "Ordine");
+			putValue(NAME, "Nuovo Ordine");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {

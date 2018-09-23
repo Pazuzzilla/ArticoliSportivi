@@ -67,6 +67,7 @@ public class GestioneUsciteView extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null},
@@ -102,6 +103,7 @@ public class GestioneUsciteView extends JFrame {
 		contentPane.add(scrollPane_1);
 		
 		table_1 = new JTable();
+		table_1.setEnabled(false);
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null, null},

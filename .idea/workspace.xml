@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ca475ab-5a7c-4675-a228-d1fa7078fcce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Magazzino/GestioneArticoliView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Magazzino/GestioneArticoliView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Magazzino/GestioneIngressiView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Magazzino/GestioneIngressiView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Magazzino/GestioneUsciteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Magazzino/GestioneUsciteView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Magazzino/MagazzinoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Magazzino/MagazzinoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Magazzino/MagazzinoModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Magazzino/MagazzinoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Magazzino/MagazzinoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Negozio/NegozioView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Negozio/NegozioView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Negozio/OrdineView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Negozio/OrdineView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Negozio/StoricoNegController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Negozio/StoricoNegModel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Negozio/StoricoNegView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Negozio/StoricoNegView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Segreteria/NuovoArticoloView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Segreteria/NuovoArticoloView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Segreteria/SegreteriaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Segreteria/SegreteriaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Segreteria/SegreteriaModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Segreteria/SegreteriaView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Segreteria/SegreteriaView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Segreteria/VisualizzaMovimentiView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Segreteria/VisualizzaMovimentiView.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -36,13 +26,13 @@
     <session id="732003834">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -50,14 +40,14 @@
           <entry key="Appunti" value="1" />
           <entry key="classpath" value="1" />
           <entry key="form" value="1" />
-          <entry key="java" value="169" />
+          <entry key="java" value="183" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Eclipse" value="1" />
           <entry key="GUI_DESIGNER_FORM" value="1" />
-          <entry key="JAVA" value="169" />
+          <entry key="JAVA" value="183" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
@@ -65,12 +55,12 @@
         <counts>
           <entry key="Appunti" value="205" />
           <entry key="dummy" value="36" />
-          <entry key="java" value="23251" />
+          <entry key="java" value="23469" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="23251" />
+          <entry key="JAVA" value="23469" />
           <entry key="PLAIN_TEXT" value="241" />
         </counts>
       </usages-collector>
@@ -81,20 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/DataSport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="352" column="70" selection-start-line="352" selection-start-column="70" selection-end-line="352" selection-end-column="70" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneIngressiView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="369" column="138" lean-forward="true" selection-start-line="369" selection-start-column="138" selection-end-line="369" selection-end-column="138" />
+            <state relative-caret-position="-2824">
+              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,13 +81,93 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneIngressiModel.java">
+        <entry file="file://$PROJECT_DIR$/src/data/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="24" column="33" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="24" selection-end-column="33" />
+            <state relative-caret-position="90">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Login/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="945">
+              <caret line="82" column="27" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#606#607#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Login/LoginView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneIngressiView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2540">
+              <caret line="296" lean-forward="true" selection-start-line="296" selection-end-line="296" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Negozio/OrdineView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="337" column="41" lean-forward="true" selection-start-line="337" selection-start-column="41" selection-end-line="337" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Negozio/OrdineController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneArticoliView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="428">
+              <caret line="112" column="46" lean-forward="true" selection-start-line="112" selection-start-column="46" selection-end-line="112" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Segreteria/NuovoArticoloView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="574">
+              <caret line="182" column="18" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Segreteria/NuovoArticoloController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -125,9 +183,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>numeropezzi</find>
-      <find>UPDATE</find>
-      <find>ultimo_ordine</find>
       <find>Jb</find>
       <find>ordine</find>
       <find>FROM codice</find>
@@ -155,6 +210,9 @@
       <find>codice non trovato</find>
       <find>jo</find>
       <find>isDateValid</find>
+      <find>b</find>
+      <find>textField</find>
+      <find>prezzo</find>
     </findStrings>
     <replaceStrings>
       <replace>a'</replace>
@@ -171,7 +229,6 @@
         <option value="$PROJECT_DIR$/src/data/IngressoUscita.java" />
         <option value="$PROJECT_DIR$/src/data/Negozio.java" />
         <option value="$PROJECT_DIR$/src/Segreteria/VisualizzaMovimentiModel.java" />
-        <option value="$PROJECT_DIR$/src/Login/LoginView.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/SegreteriaController.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/Magazzino.form" />
         <option value="$PROJECT_DIR$/src/Magazzino/GestioneIngressi.java" />
@@ -179,7 +236,6 @@
         <option value="$PROJECT_DIR$/src/Negozio/NegozioModel.java" />
         <option value="$PROJECT_DIR$/src/Negozio/NegozioController.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/Appunti" />
-        <option value="$PROJECT_DIR$/src/Segreteria/NuovoArticoloView.java" />
         <option value="$PROJECT_DIR$/src/Segreteria/NuovoArticoloController.java" />
         <option value="$PROJECT_DIR$/src/Negozio/OrdineModel.java" />
         <option value="$PROJECT_DIR$/src/Negozio/OrdineController.java" />
@@ -189,7 +245,6 @@
         <option value="$PROJECT_DIR$/src/Magazzino/GestioneUsciteModel.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/GestioneArticoliModel.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/GestioneArticoliController.java" />
-        <option value="$PROJECT_DIR$/src/Negozio/OrdineView.java" />
         <option value="$PROJECT_DIR$/src/Negozio/StoricoNegController.java" />
         <option value="$PROJECT_DIR$/src/Negozio/StoricoNegView.java" />
         <option value="$PROJECT_DIR$/src/Segreteria/VisualizzaMovimentiController.java" />
@@ -199,10 +254,13 @@
         <option value="$PROJECT_DIR$/src/Magazzino/GestioneUsciteView.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/MagazzinoController.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/MagazzinoView.java" />
-        <option value="$PROJECT_DIR$/src/Login/LoginController.java" />
         <option value="$PROJECT_DIR$/src/Segreteria/SegreteriaController.java" />
         <option value="$PROJECT_DIR$/src/Segreteria/SegreteriaView.java" />
         <option value="$PROJECT_DIR$/src/Magazzino/GestioneIngressiView.java" />
+        <option value="$PROJECT_DIR$/src/Login/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/Login/LoginView.java" />
+        <option value="$PROJECT_DIR$/src/Segreteria/NuovoArticoloView.java" />
+        <option value="$PROJECT_DIR$/src/Negozio/OrdineView.java" />
       </list>
     </option>
   </component>
@@ -219,8 +277,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="194" />
-    <option name="y" value="53" />
+    <option name="x" value="88" />
+    <option name="y" value="22" />
     <option name="width" value="1322" />
     <option name="height" value="945" />
   </component>
@@ -229,8 +287,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,17 +312,24 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Magazzino" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Ingegneria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Ingegneria" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Negozio" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537638109560" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537649736681" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -353,7 +417,8 @@
       <workItem from="1537297307819" duration="51185000" />
       <workItem from="1537514396570" duration="26337000" />
       <workItem from="1537607639864" duration="292000" />
-      <workItem from="1537608468538" duration="14992000" />
+      <workItem from="1537608468538" duration="18470000" />
+      <workItem from="1537652148801" duration="4592000" />
     </task>
     <servers />
   </component>
@@ -366,10 +431,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156952000" />
+    <option name="totallyTimeSpent" value="165022000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="194" y="53" width="1322" height="945" extended-state="0" />
+    <frame x="88" y="22" width="1322" height="945" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -377,7 +442,7 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.28046876" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.284375" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" weight="0.3298611" />
       <window_info anchor="bottom" id="Terminal" order="1" />
@@ -385,7 +450,7 @@
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.20949075" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.24267292" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.24267292" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.39719626" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.33059788" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
@@ -437,18 +502,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/DataSport.java</url>
-          <line>38</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/src.zip!/java/awt/event/ActionListener.java">
@@ -524,20 +577,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="92" column="12" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Negozio/StoricoNegModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Negozio/StoricoNegModel.java" />
     <entry file="file://$PROJECT_DIR$/src/Login/LoginObservedModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -569,20 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Segreteria/NuovoArticoloView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Segreteria/NuovoArticoloController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="49" column="12" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneArticoliModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -600,20 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Negozio/OrdineController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Negozio/OrdineView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="245" column="31" selection-start-line="245" selection-start-column="31" selection-end-line="245" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Negozio/NegozioView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
@@ -621,13 +633,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Negozio/StoricoNegController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Negozio/StoricoNegController.java" />
     <entry file="file://$PROJECT_DIR$/src/Negozio/StoricoNegView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -662,16 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneArticoliView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="112" column="46" lean-forward="true" selection-start-line="112" selection-start-column="46" selection-end-line="112" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Negozio/NegozioController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -679,30 +675,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneUsciteModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-37">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Magazzino/MagazzinoModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Segreteria/SegreteriaModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Magazzino/MagazzinoModel.java" />
+    <entry file="file://$PROJECT_DIR$/src/Segreteria/SegreteriaModel.java" />
     <entry file="file://$PROJECT_DIR$/src/Negozio/NegozioModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -755,40 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneUsciteView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="57" column="56" selection-start-line="57" selection-start-column="56" selection-end-line="57" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/DataSport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="352" column="70" selection-start-line="352" selection-start-column="70" selection-end-line="352" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneIngressiModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -799,13 +739,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneIngressiView.java">
+    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneUsciteModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="369" column="138" lean-forward="true" selection-start-line="369" selection-start-column="138" selection-end-line="369" selection-end-column="138" />
+        <state relative-caret-position="-499">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneUsciteView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3297">
+          <caret line="57" column="56" selection-start-line="57" selection-start-column="56" selection-end-line="57" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Login/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="82" column="27" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Login/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneArticoliView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="112" column="46" lean-forward="true" selection-start-line="112" selection-start-column="46" selection-end-line="112" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Segreteria/NuovoArticoloController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Segreteria/NuovoArticoloView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="182" column="18" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Negozio/OrdineController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/DataSport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2824">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Magazzino/GestioneIngressiView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2540">
+          <caret line="296" lean-forward="true" selection-start-line="296" selection-end-line="296" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Negozio/OrdineView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="337" column="41" lean-forward="true" selection-start-line="337" selection-start-column="41" selection-end-line="337" selection-end-column="41" />
         </state>
       </provider>
     </entry>

@@ -40,7 +40,6 @@ public class StoricoNegView extends JFrame {
 		contentPane.setLayout(sl_contentPane);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setEnabled(false);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, scrollPane, 18, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, scrollPane, -24, SpringLayout.SOUTH, contentPane);
@@ -48,6 +47,7 @@ public class StoricoNegView extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
+		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null},

@@ -59,6 +59,7 @@ public class VisualizzaMovimentiView extends JFrame {
 		textField.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setEnabled(false);
 		sl_contentPane.putConstraint(SpringLayout.NORTH, scrollPane, 11, SpringLayout.SOUTH, textField);
 		sl_contentPane.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, scrollPane, -24, SpringLayout.SOUTH, contentPane);
@@ -66,6 +67,7 @@ public class VisualizzaMovimentiView extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
+		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 				new Object[][]{
 						{null, null}, {null, null},

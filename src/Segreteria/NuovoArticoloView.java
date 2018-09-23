@@ -180,7 +180,7 @@ public class NuovoArticoloView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				insert();
-				textField.setText("");
+				//textField.setText("");
 				textField_1.setText("");
 				textField_2.setText("");
 				textField_3.setText("");

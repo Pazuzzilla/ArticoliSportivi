@@ -24,6 +24,8 @@ public class OrdineView extends JFrame  {
 	private OrdineController oC;
 	private int numriga;
 	private JTextField textField;
+	private JButton btnAggiungi;
+	private JButton btnInviaOrdine;
 
 
 
@@ -62,15 +64,16 @@ public class OrdineView extends JFrame  {
 		contentPane.add(textQ);
 		textQ.setColumns(10);
 		
-		JButton btnAggiungi = new JButton("Aggiungi");
+		btnAggiungi = new JButton("Aggiungi");
 		btnAggiungi.setAction(action);
 		btnAggiungi.setBounds(719, 67, 101, 21);
 		contentPane.add(btnAggiungi);
 		
-		JButton btnInviaOrdine = new JButton("Invia Ordine");
+		btnInviaOrdine = new JButton("Invia Ordine");
 		btnInviaOrdine.setAction(action_1);
 		btnInviaOrdine.setBounds(42, 392, 101, 29);
 		contentPane.add(btnInviaOrdine);
+
 		
 		
 		//bottone che elimina la finestra
@@ -149,6 +152,8 @@ public class OrdineView extends JFrame  {
 		textField.setBounds(700, 387, 130, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
+
+		btnInviaOrdine.setEnabled(false);
 	}
 	
 	// creo righe di ordine che andranno passate alla finestra NEGOZIO
@@ -215,12 +220,18 @@ public class OrdineView extends JFrame  {
 
 				}
 				numriga++;
+
+				btnInviaOrdine.setEnabled(true);
 			}
 			//altrimenti scrive un messaggio e non fa nulla
 			else{
 				JOptionPane.showMessageDialog(null, "ARTICOLO " + articolo + " gia' presente nell'ordine");
 			}
+
 		}
+
+		textArt.setText("");
+		textQ.setText("");
 	}
 
 
@@ -275,15 +286,20 @@ public class OrdineView extends JFrame  {
 
 			// disabilito il bottone inserisci
 
-
+			btnAggiungi.setEnabled(false);
+			/*
 			JButton b = (JButton) e.getSource();
 			b.setEnabled(false);
-			
+			*/
 			
 			//per inserire passo al modello di volta in volta un articolo diverso
 			//e lo faccio insertire dal controller
 			//tramite una chiamaata a database
-			
+
+			btnInviaOrdine.setEnabled(false);
+			textArt.setText("");
+			textQ.setText("");
+			btnAggiungi.setEnabled(true);
 			for (int j = 0; j< numriga; j++){
 
 				oM.setArticolo(table.getValueAt(j,3).toString());
@@ -295,83 +311,94 @@ public class OrdineView extends JFrame  {
 			}
 			if(oM.getArticolo() == null || oM.getPrezzo() <= 0 || oM.getNumeroPezzi() <= 0) {
 				JOptionPane.showMessageDialog(null, "Errore Nella Compilazione Dei Campi! ");
-				b.setEnabled(true);
+				//b.setEnabled(true);
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "ordine inserito ");
-				b.setEnabled(true);
+				//b.setEnabled(true);
 			}
+
+			reset();
 		}
 	}
 
 
+public void reset() {
 
-	
+	numriga = 0;
+	oM.setPrezzo_complessivo(0);
+
+	textField.setText("");
+	btnAggiungi.setEnabled(true);
+	btnInviaOrdine.setEnabled(false);
+
+	//textArt.setText("");
+	//textQ.setText("");
+
+	table.setModel(new DefaultTableModel(
+			new Object[][]{
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+					{null, null, null, null, null, null},
+			},
+			new String[]{
+					"Negozio", "codice ordine", "data", "articolo", "numeropezzi", "Prezzo totale"
+			}
+	));
+
+}
+
 	//inner class per eliminare ordine
 	private class SwingAction_2 extends AbstractAction {
 		public SwingAction_2() {
-			putValue(NAME, "Elimina Ordine");
+			putValue(NAME, "Reset");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
 
-
-			numriga = 0;
-			oM.setPrezzo_complessivo(0);
-			textField.setText("");
-			
-			table.setModel(new DefaultTableModel(
-					new Object[][] {
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-							{null, null, null, null, null, null},
-					},
-					new String[] {
-						"Negozio", "codice ordine", "data", "articolo", "numeropezzi","Prezzo totale"
-					}
-				));
+			reset();
 
 		}
 	}
